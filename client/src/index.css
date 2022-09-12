@@ -1,0 +1,407 @@
+@import-normalize; /* bring in normalize.css styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css");
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --main-heading-color: #4d8c75;
+  --main-bg-color: #f2f7f3;
+  --main-btn-color: #c6755c;
+  --main-text-color: #134d38;
+  --main-text-color2: #134d38;
+  --section-bg-color: #fafbf9;
+  --header-font: Spicy Rice;
+  --spacing: 0.18rem;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--main-text-color2);
+  background-color: var(--main-bg-color);
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* These styles are required to make icons render reliably */
+.icon::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-family: serif;
+  font-family: var(--header-font);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/*
+=============== 
+Header Styles
+===============
+*/
+
+.app-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--main-bg-color);
+  padding-top: 2em;
+}
+
+.app-header__title {
+  color: var(--main-heading-color);
+  letter-spacing: var(--spacing);
+}
+
+/*
+=============== 
+Home Section Styles
+===============
+*/
+
+.home-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0 3rem 0;
+  background-color: var(--section-bg-color);
+  border-radius: 1rem;
+  box-shadow: 0px 20px 37px 2px #4d8c7516;
+  padding: 4.5rem 0;
+}
+
+.home__img-wrapper {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.home__img {
+  width: 100%;
+  height: auto;
+}
+
+.home__heading {
+  width: 65%;
+  color: var(--main-heading-color);
+  margin-top: 1.5em;
+  line-height: 1.4;
+}
+
+.home__heading span {
+  font-family: var(--header-font);
+}
+
+.home__btn {
+  background-color: var(--main-btn-color);
+  color: white;
+  margin-top: 2em;
+  width: 175px;
+  height: 50px;
+  border-radius: 15px;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-top: 2px solid #e6a898;
+  border-left: 1px solid #e6a898;
+  border-right: 1px solid #85443460;
+  border-bottom: 4px solid #85443460;
+}
+
+/*
+=============== 
+Care Section Styles
+===============
+*/
+.care-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 0;
+}
+
+.water-list,
+.feed-list {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--section-bg-color);
+  border-radius: 1rem;
+  padding: 3rem 0;
+  margin: 1rem 0;
+  box-shadow: 0px 20px 37px 2px #4d8c7516;
+}
+
+.water-list__plants,
+.feed-list__plants {
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.water-list h2,
+.feed-list h2 {
+  font-family: var(--header-font);
+  color: var(--main-heading-color);
+}
+
+.water-list p {
+  width: 75%;
+}
+
+.plant {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  position: relative;
+  text-align: left;
+}
+
+.plant__img-wrapper {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #88B086;
+}
+
+.plant__img {
+  width: 100%;
+  height: auto;
+}
+
+.plant__name {
+  width: 50%;
+  padding-left: 1.5rem;
+}
+/*
+.plant__check {
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.75rem;
+  color: var(--main-heading-color);
+  position: absolute;
+  top: 0rem;
+  right: 1.5rem;
+}
+*/
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--section-bg-color);
+  /* Not removed via appearance */
+  margin: 0;
+  border: 1.5px solid var(--main-text-color2);
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--section-bg-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  /*position: absolute;*/
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="checkbox"]:after {
+  display: inline-block;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f00c";
+  font-size: 1.55rem;
+  color: #a6cc8b;
+  display: none;
+  position: absolute;
+}
+
+.plant__check:hover {
+  background-color: white;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--section-bg-color);
+}
+
+input[type="checkbox"]:checked:after {
+  display: block;
+}
+
+@media screen and (min-width: 650px) {
+  /*
+=============== 
+Global Styles
+===============
+*/
+
+  h1 {
+    font-size: 3.5rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  /*
+=============== 
+Header Styles
+===============
+*/
+
+  .app-header {
+    padding-top: 6rem;
+  }
+
+  /*
+=============== 
+Home Section
+===============
+*/
+  .home-section {
+    margin: 3rem 0 4rem 0;
+    padding: 6rem 0 8rem 0;
+  }
+
+  .home__img-wrapper {
+    width: 400px;
+    height: 400px;
+  }
+
+  .home__btn {
+    width: 275px;
+    height: 67px;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  /*
+=============== 
+Care Section
+===============
+*/
+
+  .care-section {
+    margin: 3rem 0 4rem 0;
+  }
+
+  .water-list,
+  .feed-list {
+    width: 80%;
+    padding: 5rem 0 3rem 0;
+  }
+
+  .plant {
+    margin: 3rem 0;
+  }
+
+  .plant__img-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .plant__name {
+    padding-left: 3rem;
+    padding-top: 1rem;
+  }
+
+  /*.plant__check {
+    font-family: "Permanent Marker", cursive;
+    font-size: 2.5rem;
+    color: var(--main-heading-color);
+    position: absolute;
+    top: 0rem;
+    right: 5.5rem;
+  }
+  */
+  input[type="checkbox"] {
+    margin: 0;
+    font-size: 2.5rem;
+    top: 0rem;
+    right: 5.5rem;
+  }
+}
