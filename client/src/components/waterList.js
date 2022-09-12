@@ -34,7 +34,7 @@ export default function WaterList(props) {
   return (
     <div className="water-list">
       <h2>Water Me!</h2>
-      <p>check off to reset water schedule and delete from list</p>
+      <p>check off to reset water schedule and remove from list</p>
       <ul className="water-list__plants">{waterList()}</ul>
     </div>
   );
