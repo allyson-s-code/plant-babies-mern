@@ -17,7 +17,7 @@ plantRoutes.route("/plant").get(function (req, res) {
   db_connect
     .collection("plants")
     .find({})
-    .toArray(function (err, result) {
+    .toArray(function (err, result) { 
       if (err) throw err;
       res.json(result);
     });
@@ -39,9 +39,7 @@ plantRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
-      name: req.body.name,
-      position: req.body.position,
-      level: req.body.level,
+      waterDate: req.body.waterDate
     },
   };
   db_connect

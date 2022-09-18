@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 
-export default function WaterList() {
+export default function WaterList(props) {
   const [plants, setPlants] = useState([]);
 
-  //fetches the records from the database
+  //fetches all the records from the database
   useEffect(() => {
     async function getPlants() {
       const response = await fetch("http://localhost:4000/plant/");
@@ -22,11 +22,10 @@ export default function WaterList() {
     getPlants();
 
     return;
-  }, [plants.length]);
+  }, [plants.length, plants.waterDate]);
 
 
   //map out the plants that are due or overdue for watering
-
   function waterList(plants) {
       let filter = plants.filter((plant) => {
         let today = new Date().getTime();
@@ -53,7 +52,7 @@ export default function WaterList() {
       <ul className="water-list__plants">
         { waterList(plants).map(plant => 
           <li>
-            <Plant name={plant.name} img={plant.img} key={plant._id}></Plant>
+            <Plant name={plant.name} img={plant.img} key={plant._id} ></Plant>
           </li>) }
       </ul>
     </div>
