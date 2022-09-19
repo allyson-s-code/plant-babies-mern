@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 
-export default function WaterList(props) {
+export default function WaterList() {
   const [plants, setPlants] = useState([]);
 
   //fetches all the records from the database
@@ -52,7 +52,7 @@ export default function WaterList(props) {
       <ul className="water-list__plants">
         { waterList(plants).map(plant => 
           <li>
-            <Plant name={plant.name} img={plant.img} key={plant._id} ></Plant>
+            <Plant name={plant.name} img={plant.img} key={plant._id} waterFrequency={plant.waterFrequency}></Plant>
           </li>) }
       </ul>
     </div>
