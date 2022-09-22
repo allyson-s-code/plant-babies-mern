@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { useParams } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from '@fortawesome/fontawesome-free-solid'
+
+
  
-fontawesome.library.add(faCheck);
- 
+
 export default function WaterList() {
  const params = useParams();
  const [plants, setPlants] = useState([]);
@@ -52,7 +51,7 @@ export default function WaterList() {
  
 
  // This will calculate new waterDate
- function newWaterDate(plant)  {
+ const newWaterDate = (plant) => {
    let today = new Date();
    let freq = plant.waterFrequency;
    return today.setDate(today.getDate() + freq)
@@ -60,14 +59,18 @@ export default function WaterList() {
  
  // This will update the waterDate
 function handleUpdate(id) {
-  setUpdatedItem((prevInput) => {
+  
+  const updatedPlant = {waterDate: newWaterDate(id)}
+  setUpdatedItem(updatedItem => {
+    
     return {
-      ...prevInput,
-      waterDate: {newWaterDate}
+      ...updatedItem,
+      ...updatedPlant
     }
+    
   })
   submitData(id);
-  console.log("yahoo");
+  console.log(updatedPlant)
 }
  
 // This will update database 
@@ -96,10 +99,7 @@ function handleUpdate(id) {
        { waterList(plants).map(plant =>
          <li key={plant._id} className="plant">
            <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency}  />
-           <label className="plant__care-form">
-            <input onClick={() => handleUpdate(plant._id)} type="checkbox" name="checkbox" />
-            <FontAwesomeIcon icon="check" />
-          </label>
+           <span onClick={() => handleUpdate(plant._id)} className="plant__check">X</span>
          </li>) }
      </ul>
    </div>
