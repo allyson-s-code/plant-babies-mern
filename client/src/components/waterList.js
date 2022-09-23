@@ -3,16 +3,10 @@ import Plant from "./plant";
 import { useParams } from "react-router";
 
 
- 
-
 export default function WaterList() {
  const params = useParams();
  const [plants, setPlants] = useState([]);
- const [updatedItem, setUpdatedItem] = useState ({
-   waterFrequency: "",
-   waterDate: "",
-   id: ""
- });
+ 
  
  //fetches all the records from the database
  useEffect(() => {
@@ -47,36 +41,27 @@ export default function WaterList() {
     
  }
  console.log(plants)
- 
- 
 
- // This will calculate new waterDate
- const newWaterDate = (plant) => {
-   let today = new Date();
-   let freq = plant.waterFrequency;
-   return today.setDate(today.getDate() + freq)
- }
  
- // This will update the waterDate
+ // This will update the waterDate based on onClick event on plant item
 function handleUpdate(id) {
+  //Set plant based on id passed thru onClick
+  const plant = plants.find(plant => plant._id === id);
   
-  const updatedPlant = {waterDate: newWaterDate(id)}
-  setUpdatedItem(updatedItem => {
-    
-    return {
-      ...updatedItem,
-      ...updatedPlant
-    }
-    
-  })
+  // This will calculate new waterDate
+  let date = new Date();
+  const freq = plant.waterFrequency;
+  date = date.setDate(date.getDate() + freq)
+  
+  //trigger function to send update to database
   submitData(id);
-  console.log(updatedPlant)
+  console.log(new Date(date))
 }
  
 // This will update database 
- async function submitData(id) {
+ async function submitData(id, date) {
    const editedDate = {
-     waterDate: {newWaterDate}
+     waterDate: {date}
    };
     // This will send a post request to update the data in the database.
    await fetch(`http://localhost:4000/update/${params.id}`, {
@@ -98,7 +83,7 @@ function handleUpdate(id) {
      <ul className="water-list__plants">
        { waterList(plants).map(plant =>
          <li key={plant._id} className="plant">
-           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency}  />
+           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency} removePlant={plant.removeP} />
            <span onClick={() => handleUpdate(plant._id)} className="plant__check">X</span>
          </li>) }
      </ul>
