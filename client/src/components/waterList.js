@@ -33,15 +33,16 @@ export default function WaterList() {
  
  //map out the plants that are due or overdue for watering
  function waterList(plants) {
-     let filter = plants.filter((plant) => {
+     plants = plants.filter((plant) => {
        let today = new Date().getTime();
        let waterDate = new Date(plant.waterDate).getTime();
        
        return waterDate <= today;
      })
-     //return filter;
+     
+     return plants;
      //or should I setPlants 
-    setPlants(filter);
+    setPlants(plants);
     
  }
  console.log(plants)
@@ -51,7 +52,7 @@ export default function WaterList() {
 function handleUpdate(id) {
   //Set plant based on id passed thru onClick
   const plant = plants.find(plant => plant._id === id);
-  //let date = new Date();
+  setUpdatedPlant(plant);
   
     
   //set useState
@@ -63,7 +64,7 @@ function handleUpdate(id) {
     console.log(date)
     return {
       ...updatedPlant,
-      waterDate: {date}
+      waterDate: date
     };
     
   });
@@ -93,7 +94,7 @@ function handleUpdate(id) {
 
  //delete plant item by id
  const removePlant = (id) => {
-  let updatedWaterList = plants.filter((plant) => {
+    plants.filter((plant) => {
     const notIdMatch = (plant) => plant.id !== id;
     return plants.filter(notIdMatch);
   })
@@ -106,7 +107,7 @@ function handleUpdate(id) {
      <h2>Water Me!</h2>
      <p>check off to reset water schedule and remove from list</p>
      <ul className="water-list__plants">
-       { plants.map(plant =>
+       { waterList(plants).map(plant =>
          <li key={plant._id} className="plant">
            <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency} removePlant={removePlant} />
            <span onClick={() => handleUpdate(plant._id)} className="plant__check">X</span>
