@@ -6,7 +6,9 @@ import { useParams } from "react-router";
 export default function WaterList() {
  const params = useParams();
  const [plants, setPlants] = useState([]);
- 
+ const [updatedPlant, setUpdatedPlant] = useState({
+   waterDate: ""
+ });
  
  //fetches all the records from the database
  useEffect(() => {
@@ -34,10 +36,12 @@ export default function WaterList() {
      let filter = plants.filter((plant) => {
        let today = new Date().getTime();
        let waterDate = new Date(plant.waterDate).getTime();
- 
+       
        return waterDate <= today;
      })
-     return filter;
+     //return filter;
+     //or should I setPlants 
+    setPlants(filter);
     
  }
  console.log(plants)
@@ -47,15 +51,28 @@ export default function WaterList() {
 function handleUpdate(id) {
   //Set plant based on id passed thru onClick
   const plant = plants.find(plant => plant._id === id);
+  //let date = new Date();
   
+    
+  //set useState
   // This will calculate new waterDate
-  let date = new Date();
-  const freq = plant.waterFrequency;
-  date = date.setDate(date.getDate() + freq)
+  setUpdatedPlant((updatedPlant)=> {
+    let date = new Date();
+    let freq = plant.waterFrequency;
+    date.setDate(date.getDate() + freq)
+    console.log(date)
+    return {
+      ...updatedPlant,
+      waterDate: {date}
+    };
+    
+  });
   
   //trigger function to send update to database
   submitData(id);
-  console.log(new Date(date))
+  console.log(updatedPlant);
+  
+  removePlant(id);
 }
  
 // This will update database 
@@ -73,6 +90,14 @@ function handleUpdate(id) {
    });
    console.log(`item with id ${id} updated`);
  }
+
+ //delete plant item by id
+ const removePlant = (id) => {
+  let updatedWaterList = plants.filter((plant) => {
+    const notIdMatch = (plant) => plant.id !== id;
+    return plants.filter(notIdMatch);
+  })
+ }
  
  
  
@@ -81,9 +106,9 @@ function handleUpdate(id) {
      <h2>Water Me!</h2>
      <p>check off to reset water schedule and remove from list</p>
      <ul className="water-list__plants">
-       { waterList(plants).map(plant =>
+       { plants.map(plant =>
          <li key={plant._id} className="plant">
-           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency} removePlant={plant.removeP} />
+           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency} removePlant={removePlant} />
            <span onClick={() => handleUpdate(plant._id)} className="plant__check">X</span>
          </li>) }
      </ul>
