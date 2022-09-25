@@ -28,7 +28,7 @@ export default function WaterList() {
    getPlants();
  
    return;
- }, [plants.length]);
+ }, []);
  
  
  //map out the plants that are due or overdue for watering
@@ -39,11 +39,9 @@ export default function WaterList() {
        
        return waterDate <= today;
      })
-     
+     // setPlants(plants); ***infinite loop error***
      return plants;
-     //or should I setPlants 
-    setPlants(plants);
-    
+     //or should I setPlants  
  }
  console.log(plants)
 
@@ -66,24 +64,24 @@ function handleUpdate(id) {
       ...updatedPlant,
       waterDate: date
     };
-    
   });
   
-  //trigger function to send update to database
+  //update database
   submitData(id);
-  console.log(updatedPlant);
-  
+  //remove from UI list
   removePlant(id);
 }
- 
-// This will update database 
+
+console.log(updatedPlant);
+
+// update database 
  async function submitData(id, date) {
    const editedDate = {
-     waterDate: {date}
+     waterDate: date
    };
     // This will send a post request to update the data in the database.
    await fetch(`http://localhost:4000/update/${params.id}`, {
-     method: "POST",
+     method: "PUT",
      body: JSON.stringify(editedDate),
      headers: {
        'Content-Type': 'application/json'
@@ -92,15 +90,8 @@ function handleUpdate(id) {
    console.log(`item with id ${id} updated`);
  }
 
- //delete plant item by id
- const removePlant = (id) => {
-    plants.filter((plant) => {
-    const notIdMatch = (plant) => plant.id !== id;
-    return plants.filter(notIdMatch);
-  })
- }
- 
- 
+ const removePlant = (id) => 
+  setPlants((plants) => plants.filter((plant) => plant._id !== id));
  
  return (
    <div className="water-list">
