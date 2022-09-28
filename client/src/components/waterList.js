@@ -46,30 +46,34 @@ export default function WaterList() {
  console.log(plants)
 
  
+
+
  // This will update the waterDate based on onClick event on plant item
 function handleUpdate(id) {
   //Set plant based on id passed thru onClick
   const plant = plants.find(plant => plant._id === id);
-  setUpdatedPlant(plant);
+  
    
   //set useState
   //calculate new waterDate
-  setUpdatedPlant(()=> {
-    let date = new Date();
-    let freq = plant.waterFrequency;
-    date.setDate(date.getDate() + freq)
-    console.log(date) //correct
-    return {
-      waterDate: date
-    };
-  });
+  let date = new Date();
+  let freq = plant.waterFrequency;
+  date.setDate(date.getDate() + freq)
+  setUpdatedPlant({waterDate:date}) 
+
+  console.log(date) //correct
   console.log(plant); //giving current
+  console.log(updatedPlant) //previous 
+
   //update database
   submitData(id);
   //remove from UI list
   removePlant(id);
 }
 
+useEffect(() => {
+  console.log(updatedPlant);
+},[updatedPlant])
 
 
 // update database 
@@ -88,7 +92,7 @@ function handleUpdate(id) {
    console.log(`item with id ${id} updated`);
    console.log(editedDate); //giving previously clicked editedDate
    console.log(id); //correct and current 
-   
+  
  }
 
  const removePlant = (id) => 

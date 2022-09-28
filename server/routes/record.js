@@ -36,7 +36,7 @@ plantRoutes.route("/plant/:id").get(function (req, res) {
 // This section will help you update a record by id.
 plantRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
-  let myquery = { _id: ObjectId(req.params.id) };
+  let myquery = { _id: ObjectId(req.id) };
   let newvalues = {
     $set: {
       waterDate: req.body.waterDate
