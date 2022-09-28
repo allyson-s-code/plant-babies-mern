@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
-import { useParams } from "react-router";
+//import { useParams } from "react-router";
 
 
 export default function WaterList() {
- const params = useParams();
+ //const params = useParams();
  const [plants, setPlants] = useState([]);
  const [updatedPlant, setUpdatedPlant] = useState({
    waterDate: ""
@@ -41,7 +41,7 @@ export default function WaterList() {
      })
      // setPlants(plants); ***infinite loop error***
      return plants;
-     //or should I setPlants  
+       
  }
  console.log(plants)
 
@@ -51,43 +51,44 @@ function handleUpdate(id) {
   //Set plant based on id passed thru onClick
   const plant = plants.find(plant => plant._id === id);
   setUpdatedPlant(plant);
-  
-    
+   
   //set useState
-  // This will calculate new waterDate
-  setUpdatedPlant((updatedPlant)=> {
+  //calculate new waterDate
+  setUpdatedPlant(()=> {
     let date = new Date();
     let freq = plant.waterFrequency;
     date.setDate(date.getDate() + freq)
-    console.log(date)
+    console.log(date) //correct
     return {
-      ...updatedPlant,
       waterDate: date
     };
   });
-  
+  console.log(plant); //giving current
   //update database
   submitData(id);
   //remove from UI list
   removePlant(id);
 }
 
-console.log(updatedPlant);
+
 
 // update database 
- async function submitData(id, date) {
+ async function submitData(id) {
    const editedDate = {
-     waterDate: date
+     waterDate: updatedPlant.waterDate
    };
     // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:4000/update/${params.id}`, {
-     method: "PUT",
+   await fetch(`http://localhost:4000/update/${id}`, {
+     method: "POST",
      body: JSON.stringify(editedDate),
      headers: {
        'Content-Type': 'application/json'
      },
    });
    console.log(`item with id ${id} updated`);
+   console.log(editedDate); //giving previously clicked editedDate
+   console.log(id); //correct and current 
+   
  }
 
  const removePlant = (id) => 
@@ -100,7 +101,7 @@ console.log(updatedPlant);
      <ul className="water-list__plants">
        { waterList(plants).map(plant =>
          <li key={plant._id} className="plant">
-           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency} removePlant={removePlant} />
+           <Plant name={plant.name} img={plant.img} waterFrequency={plant.waterFrequency}  />
            <span onClick={() => handleUpdate(plant._id)} className="plant__check">X</span>
          </li>) }
      </ul>

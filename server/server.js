@@ -18,7 +18,7 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Home sweet home 🏚"); // always responds with the string "TODO"
+  res.send("Home sweet home 🏚"); 
 });
 
 
