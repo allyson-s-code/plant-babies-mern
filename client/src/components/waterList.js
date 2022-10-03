@@ -78,8 +78,16 @@ useEffect(() => {
 
 // update database 
  async function submitData(id) {
+  const plant = plants.find(plant => plant._id === id)
+  let date = new Date();
+  let freq = plant.waterFrequency;
+  console.log("freq", freq)
+   const newDate = date.getDate() + freq
+   console.log("newDate", newDate);
+   date.setDate(newDate);
+   console.log("date", date);
    const editedDate = {
-     waterDate: updatedPlant.waterDate
+     waterDate: date.toLocaleDateString("en-CA")
    };
     // This will send a post request to update the data in the database.
    await fetch(`http://localhost:4000/update/${id}`, {
