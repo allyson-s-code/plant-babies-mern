@@ -45,7 +45,8 @@ plantRoutes.route("/update/:id").post(function (req, response) {
   console.log("myQuery", myquery)
   let newvalues = {
     $set: {
-      waterDate: req.body.waterDate
+      waterDate: req.body.waterDate,
+      feedDate: req.body.feedDate
     },
   };
   console.log("newValues", newvalues)
