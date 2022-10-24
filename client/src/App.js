@@ -8,11 +8,10 @@ const App = () => (
   <div className="app-main">
     <Router>
       <Header />
-        <Routes>
-          <Route path="/" element={ <Home /> } />
-          <Route path="/care" element={ <Care /> } />
-          <Route path="/update" element={ <Care /> } />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/care" element={<Care />} />
+      </Routes>
     </Router>
   </div>
 );

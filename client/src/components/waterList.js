@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export default function WaterList() {
   const [plants, setPlants] = useState([]);
@@ -40,9 +41,6 @@ export default function WaterList() {
 
   // This will update the waterDate based on onClick event on plant item
   function handleUpdate(id) {
-    //Set plant based on id passed thru onClick
-    const plant = plants.find((plant) => plant._id === id);
-
     //call update database function
     submitData(id);
     //remove from UI list
@@ -88,23 +86,25 @@ export default function WaterList() {
         <p>Your babies are watered and happy!</p>
       )}
 
-      <ul className="water-list__plants">
+      <TransitionGroup component="ul" className="water-list__plants">
         {waterList(plants).map((plant) => (
-          <li key={plant._id} className="plant">
-            <Plant
-              name={plant.name}
-              img={plant.img}
-              careMessage={careMessage(plant)}
-            />
-            <span
-              onClick={() => handleUpdate(plant._id)}
-              className="plant__check"
-            >
-              X
-            </span>
-          </li>
+          <CSSTransition key={plant._id} timeout={700} classNames="item">
+            <li className="plant">
+              <Plant
+                name={plant.name}
+                img={plant.img}
+                careMessage={careMessage(plant)}
+              />
+              <span
+                onClick={() => handleUpdate(plant._id)}
+                className="plant__check"
+              >
+                X
+              </span>
+            </li>
+          </CSSTransition>
         ))}
-      </ul>
+      </TransitionGroup>
     </div>
   );
 }

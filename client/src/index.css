@@ -235,6 +235,7 @@ Care Section Styles
 .water-list p,
 .feed-list p {
   width: 75%;
+  margin: 0.5rem 0;
 }
 
 .plant {
@@ -246,11 +247,20 @@ Care Section Styles
   margin: 2.25rem 0;
   position: relative;
   text-align: left;
-  transition: 0.2s ease-in-out;
 }
 
 .plant:hover {
-  transform: scale(1.1);
+  transform: scale(1.025);
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 700ms ease-out;
+}
+
+.item-enter {
+  opacity: 0;
+  transition: opacity 700ms ease-in;
 }
 
 .plant__img-text-wrapper {
