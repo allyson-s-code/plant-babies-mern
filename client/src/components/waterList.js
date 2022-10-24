@@ -3,10 +3,6 @@ import Plant from "./plant";
 
 export default function WaterList() {
   const [plants, setPlants] = useState([]);
-  const [updatedPlant, setUpdatedPlant] = useState({
-    waterDate: "",
-    feedDate: "",
-  });
 
   //fetches all the records from the database
   useEffect(() => {
@@ -47,13 +43,6 @@ export default function WaterList() {
     //Set plant based on id passed thru onClick
     const plant = plants.find((plant) => plant._id === id);
 
-    //set useState
-    //calculate new waterDate
-    let date = new Date();
-    let freq = plant.waterFrequency;
-    date.setDate(date.getDate() + freq);
-    setUpdatedPlant({ waterDate: date });
-
     //call update database function
     submitData(id);
     //remove from UI list
@@ -87,6 +76,9 @@ export default function WaterList() {
   const removePlant = (id) =>
     setPlants((plants) => plants.filter((plant) => plant._id !== id));
 
+  const careMessage = (plant) =>
+    `Water me every ${plant.waterFrequency} days, please`;
+
   return (
     <div className="water-list">
       <h2>Water Me!</h2>
@@ -102,7 +94,7 @@ export default function WaterList() {
             <Plant
               name={plant.name}
               img={plant.img}
-              waterFrequency={plant.waterFrequency}
+              careMessage={careMessage(plant)}
             />
             <span
               onClick={() => handleUpdate(plant._id)}

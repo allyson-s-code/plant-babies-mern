@@ -18,6 +18,7 @@ Variables
   --main-text-color: #134d38;
   --main-text-color2: #134d38;
   --section-bg-color: #fafbf9;
+  --plant-hover-color: #86ec6e;
   --header-font: Spicy Rice;
   --spacing: 0.18rem;
 }
@@ -180,6 +181,11 @@ Home Section Styles
   border-left: 1px solid #e6a898;
   border-right: 1px solid #85443460;
   border-bottom: 4px solid #85443460;
+  transition: 0.2s ease-in-out;
+}
+
+.home__btn:hover {
+  transform: scale(1.1);
 }
 
 /*
@@ -207,7 +213,7 @@ Care Section Styles
   background-color: var(--section-bg-color);
   border-radius: 1rem;
   padding: 3rem 0 2rem 0;
-  margin: 1rem 0;
+  margin: 0.75rem 0;
   box-shadow: 0px 20px 37px 2px #4d8c7516;
 }
 
@@ -240,6 +246,11 @@ Care Section Styles
   margin: 2.25rem 0;
   position: relative;
   text-align: left;
+  transition: 0.2s ease-in-out;
+}
+
+.plant:hover {
+  transform: scale(1.1);
 }
 
 .plant__img-text-wrapper {
@@ -278,29 +289,12 @@ Care Section Styles
   font-family: "Permanent Marker", cursive;
   font-size: 1.75rem;
   color: var(--main-heading-color);
-}
-
-input[type="checkbox"]:after {
-  display: inline-block;
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  content: "\f00c";
-  font-size: 1.55rem;
-  color: #a6cc8b;
-  display: none;
-  position: absolute;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .plant__check:hover {
-  background-color: white;
-}
-
-input[type="checkbox"]:checked {
-  background-color: var(--section-bg-color);
-}
-
-input[type="checkbox"]:checked:after {
-  display: block;
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 481px) {
