@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export default function FeedList() {
   const [plants, setPlants] = useState([]);
@@ -107,23 +108,25 @@ export default function FeedList() {
         <p>Your babies are fed and happy!</p>
       )}
 
-      <ul className="feed-list__plants">
+      <TransitionGroup component="ul" className="feed-list__plants">
         {feedList(plants).map((plant) => (
-          <li key={plant._id} className="plant">
-            <Plant
-              name={plant.name}
-              img={plant.img}
-              careMessage={careMessage(plant)}
-            />
-            <span
-              onClick={() => handleUpdate(plant._id)}
-              className="plant__check"
-            >
-              X
-            </span>
-          </li>
+          <CSSTransition key={plant._id} timeout={700} classNames="item">
+            <li className="plant">
+              <Plant
+                name={plant.name}
+                img={plant.img}
+                careMessage={careMessage(plant)}
+              />
+              <span
+                onClick={() => handleUpdate(plant._id)}
+                className="plant__check"
+              >
+                X
+              </span>
+            </li>
+          </CSSTransition>
         ))}
-      </ul>
+      </TransitionGroup>
     </div>
   );
 }
