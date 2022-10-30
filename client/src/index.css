@@ -12,6 +12,7 @@ Variables
 */
 
 :root {
+  --main-heading-color2: #046a38;
   --main-heading-color: #4d8c75;
   --main-bg-color: #f2f7f3;
   --main-btn-color: #c6755c;
@@ -104,6 +105,7 @@ h3 {
   margin: 0;
 }
 
+/* animated page transitions for soft fade in and out */
 .fadeIn {
   animation: 0.5s fadeIn forwards;
 }
@@ -147,8 +149,38 @@ Header Styles
 }
 
 .app-header__title {
-  color: var(--main-heading-color);
+  color: var(--main-heading-color2);
   letter-spacing: var(--spacing);
+  transition: 0.2s ease-in-out;
+}
+
+.app-header__title:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  background: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animated_text 5s ease-in-out infinite;
+  -moz-animation: animated_text 5s ease-in-out infinite;
+  -webkit-animation: animated_text 5s ease-in-out infinite;
+}
+
+.app-header__title:active {
+  transform: scale(0.98);
+}
+
+@keyframes animated_text {
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
 }
 
 /*
@@ -185,7 +217,7 @@ Home Section Styles
 
 .home__heading {
   width: 65%;
-  color: var(--main-heading-color);
+  color: var(--main-heading-color2);
   margin-top: 1.5em;
   line-height: 1.4;
 }
@@ -195,24 +227,27 @@ Home Section Styles
 }
 
 .home__btn {
-  background-color: var(--main-btn-color);
-  color: white;
+  color: var(--main-heading-color2);
   margin-top: 2em;
   width: 175px;
   height: 50px;
-  border-radius: 15px;
+  border-radius: 25px;
   letter-spacing: 0.1rem;
   font-weight: 700;
   font-size: 1.2rem;
-  border-top: 2px solid #e6a898;
-  border-left: 1px solid #e6a898;
-  border-right: 1px solid #85443460;
-  border-bottom: 4px solid #85443460;
   transition: 0.2s ease-in-out;
+  border: 2px solid var(--main-heading-color2);
 }
 
 .home__btn:hover {
   transform: scale(1.03);
+  background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
+  background-size: 200%;
+  animation: animated_text 5s ease-in-out infinite;
+  -moz-animation: animated_text 5s ease-in-out infinite;
+  -webkit-animation: animated_text 5s ease-in-out infinite;
+  border: none;
+  color: white;
 }
 
 .home__btn:active {
@@ -260,13 +295,56 @@ Care Section Styles
 .water-list h2,
 .feed-list h2 {
   font-family: var(--header-font);
-  color: var(--main-heading-color);
+  color: var(--main-heading-color2);
 }
 
 .water-list p,
 .feed-list p {
   width: 75%;
   margin: 0.5rem 0;
+}
+
+.feed-list__completed-msg,
+.plant-list__completed-msg {
+  width: 75%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.feed-list__completed-msg p,
+.plant-list__completed-msg p {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.care__btn {
+  color: var(--main-heading-color2);
+  margin-top: 2em;
+  width: 150px;
+  height: 45px;
+  border-radius: 25px;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: 0.2s ease-in-out;
+  border: 2px solid var(--main-heading-color2);
+}
+
+.care__btn:hover {
+  transform: scale(1.03);
+  background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
+  background-size: 200%;
+  animation: animated_text 5s ease-in-out infinite;
+  -moz-animation: animated_text 5s ease-in-out infinite;
+  -webkit-animation: animated_text 5s ease-in-out infinite;
+  border: none;
+  color: white;
+}
+
+.care__btn:active {
+  transform: scale(0.98);
 }
 
 .plant {
@@ -329,13 +407,17 @@ Care Section Styles
 .plant__check {
   font-family: "Permanent Marker", cursive;
   font-size: 1.75rem;
-  color: var(--main-heading-color);
+  color: var(--main-heading-color2);
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .plant__check:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+.plant__check:active {
+  transform: scale(0.98);
 }
 
 @media screen and (min-width: 481px) {
@@ -349,7 +431,7 @@ Global Styles
     font-size: 3.5rem;
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
   h3 {
     font-size: 1.3rem;
@@ -380,12 +462,12 @@ Home Section
     height: 400px;
   }
 
-  .home__btn {
+  /*.home__btn {
     width: 200px;
     height: 55px;
     font-weight: 700;
     font-size: 1.25rem;
-  }
+  }*/
 
   /*
 =============== 

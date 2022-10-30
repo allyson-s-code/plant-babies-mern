@@ -42,7 +42,7 @@ function Content() {
       }}
     >
       <Routes location={displayLocation}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/care" element={<Care />} />
       </Routes>
     </div>

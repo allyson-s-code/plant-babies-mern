@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Link } from "react-router-dom";
 
 export default function FeedList() {
   const [plants, setPlants] = useState([]);
@@ -105,7 +106,12 @@ export default function FeedList() {
       {feedList(plants).length > 0 ? (
         <p>check off to reset feed schedule and remove from list</p>
       ) : (
-        <p>Your babies are fed and happy!</p>
+        <div className="feed-list__completed-msg">
+          <p>Your babies are fed and happy!</p>
+          <Link to="/home">
+            <button className="care__btn">Return Home</button>
+          </Link>
+        </div>
       )}
 
       <TransitionGroup component="ul" className="feed-list__plants">
