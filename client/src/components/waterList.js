@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
+import happyPlant2 from "../assets/happy-plant2.png";
 
 export default function WaterList() {
   const [plants, setPlants] = useState([]);
@@ -86,6 +87,11 @@ export default function WaterList() {
       ) : (
         <div className="water-list__completed-msg">
           <p>Your babies are watered and happy!</p>
+          <img
+            src={happyPlant2}
+            alt="houseplant illustration"
+            className="water-list__completed-img"
+          />
           <Link to="/home">
             <button className="care__btn">Return Home</button>
           </Link>

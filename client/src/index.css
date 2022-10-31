@@ -157,30 +157,10 @@ Header Styles
 .app-header__title:hover {
   cursor: pointer;
   transform: scale(1.03);
-  background: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
-  background-size: 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animated_text 5s ease-in-out infinite;
-  -moz-animation: animated_text 5s ease-in-out infinite;
-  -webkit-animation: animated_text 5s ease-in-out infinite;
 }
 
 .app-header__title:active {
   transform: scale(0.98);
-}
-
-@keyframes animated_text {
-  0% {
-    background-position: 0px 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0px 50%;
-  }
 }
 
 /*
@@ -218,7 +198,7 @@ Home Section Styles
 .home__heading {
   width: 65%;
   color: var(--main-heading-color2);
-  margin-top: 1.5em;
+  margin: 1.25em 0 1rem 0;
   line-height: 1.4;
 }
 
@@ -228,15 +208,15 @@ Home Section Styles
 
 .home__btn {
   color: var(--main-heading-color2);
-  margin-top: 2em;
   width: 175px;
   height: 50px;
   border-radius: 25px;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.03rem;
   font-weight: 700;
   font-size: 1.2rem;
   transition: 0.2s ease-in-out;
   border: 2px solid var(--main-heading-color2);
+  margin: 0.75rem 0;
 }
 
 .home__btn:hover {
@@ -305,8 +285,9 @@ Care Section Styles
 }
 
 .feed-list__completed-msg,
-.plant-list__completed-msg {
+.water-list__completed-msg {
   width: 75%;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -314,14 +295,20 @@ Care Section Styles
 }
 
 .feed-list__completed-msg p,
-.plant-list__completed-msg p {
+.water-list__completed-msg p {
   width: 100%;
   margin: 0.5rem 0;
 }
 
+.water-list__completed-img,
+.feed-list__completed-img {
+  width: 50%;
+  height: auto;
+  margin: 1rem 0 2rem 0;
+}
+
 .care__btn {
   color: var(--main-heading-color2);
-  margin-top: 2em;
   width: 150px;
   height: 45px;
   border-radius: 25px;
@@ -330,21 +317,34 @@ Care Section Styles
   font-size: 0.875rem;
   transition: 0.2s ease-in-out;
   border: 2px solid var(--main-heading-color2);
+  margin-bottom: 1.25rem;
 }
 
 .care__btn:hover {
   transform: scale(1.03);
   background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
   background-size: 200%;
-  animation: animated_text 5s ease-in-out infinite;
-  -moz-animation: animated_text 5s ease-in-out infinite;
-  -webkit-animation: animated_text 5s ease-in-out infinite;
+  animation: animated_btn 5s ease-in-out infinite;
+  -moz-animation: animated_btn 5s ease-in-out infinite;
+  -webkit-animation: animated_btn 5s ease-in-out infinite;
   border: none;
   color: white;
 }
 
 .care__btn:active {
   transform: scale(0.98);
+}
+
+@keyframes animated_btn {
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
 }
 
 .plant {
@@ -356,6 +356,7 @@ Care Section Styles
   margin: 2.25rem 0;
   position: relative;
   text-align: left;
+  transition: 0.2s ease-in-out;
 }
 
 .plant:hover {
@@ -454,7 +455,7 @@ Home Section
 */
   .home-section {
     margin: 3rem 0 4rem 0;
-    padding: 6rem 0 8rem 0;
+    padding: 5rem 0 6rem 0;
   }
 
   .home__img-wrapper {
@@ -504,5 +505,19 @@ Care Section
 
   .plant__check {
     font-size: 1.75rem;
+  }
+
+  .feed-list__completed-msg,
+  .water-list__completed-msg {
+    width: 85%;
+  }
+
+  .feed-list__completed-img,
+  .water-list__completed-img {
+    margin: 1.5rem 0 2.5rem 0;
+  }
+
+  .care__btn {
+    margin-bottom: 2.25rem;
   }
 }

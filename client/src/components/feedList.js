@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
+import happyPlant1 from "../assets/happy-plant1.png";
 
 export default function FeedList() {
   const [plants, setPlants] = useState([]);
@@ -95,7 +96,6 @@ export default function FeedList() {
 
   const removePlant = (id) =>
     setPlants((plants) => plants.filter((plant) => plant._id !== id));
-  //add an ease out in transition?
 
   const careMessage = (plant) =>
     `Feed me every ${plant.feedFrequency} days, please`;
@@ -108,6 +108,11 @@ export default function FeedList() {
       ) : (
         <div className="feed-list__completed-msg">
           <p>Your babies are fed and happy!</p>
+          <img
+            src={happyPlant1}
+            alt="houseplant illustration"
+            className="feed-list__completed-img"
+          />
           <Link to="/home">
             <button className="care__btn">Return Home</button>
           </Link>
