@@ -51,6 +51,7 @@ ul {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
@@ -132,6 +133,43 @@ h3 {
   }
 }
 
+/* button styles */
+
+button {
+  color: var(--main-heading-color2);
+  border-radius: 25px;
+  transition: 0.2s ease-in-out;
+  border: 2px solid var(--main-heading-color2);
+  background-color: transparent;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
+  background-size: 200%;
+  animation: animated_btn 5s ease-in-out infinite;
+  -moz-animation: animated_btn 5s ease-in-out infinite;
+  -webkit-animation: animated_btn 5s ease-in-out infinite;
+  border: none;
+  color: white;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+@keyframes animated_btn {
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
+}
+
 /*
 =============== 
 Header Styles
@@ -207,31 +245,12 @@ Home Section Styles
 }
 
 .home__btn {
-  color: var(--main-heading-color2);
   width: 175px;
   height: 50px;
-  border-radius: 25px;
   letter-spacing: 0.03rem;
   font-weight: 700;
   font-size: 1.2rem;
-  transition: 0.2s ease-in-out;
-  border: 2px solid var(--main-heading-color2);
   margin: 0.75rem 0;
-}
-
-.home__btn:hover {
-  transform: scale(1.03);
-  background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
-  background-size: 200%;
-  animation: animated_text 5s ease-in-out infinite;
-  -moz-animation: animated_text 5s ease-in-out infinite;
-  -webkit-animation: animated_text 5s ease-in-out infinite;
-  border: none;
-  color: white;
-}
-
-.home__btn:active {
-  transform: scale(0.98);
 }
 
 /*
@@ -245,7 +264,7 @@ Care Section Styles
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3em 0;
+  margin: 1.5rem 0;
 }
 
 .water-list,
@@ -308,43 +327,13 @@ Care Section Styles
 }
 
 .care__btn {
-  color: var(--main-heading-color2);
   width: 150px;
   height: 45px;
   border-radius: 25px;
   letter-spacing: 0.1rem;
   font-weight: 700;
   font-size: 0.875rem;
-  transition: 0.2s ease-in-out;
-  border: 2px solid var(--main-heading-color2);
   margin-bottom: 1.25rem;
-}
-
-.care__btn:hover {
-  transform: scale(1.03);
-  background: linear-gradient(45deg, #0ba360, #3cba92, #2bcc7e, #2bb673);
-  background-size: 200%;
-  animation: animated_btn 5s ease-in-out infinite;
-  -moz-animation: animated_btn 5s ease-in-out infinite;
-  -webkit-animation: animated_btn 5s ease-in-out infinite;
-  border: none;
-  color: white;
-}
-
-.care__btn:active {
-  transform: scale(0.98);
-}
-
-@keyframes animated_btn {
-  0% {
-    background-position: 0px 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0px 50%;
-  }
 }
 
 .plant {
@@ -418,6 +407,78 @@ Care Section Styles
 }
 
 .plant__check:active {
+  transform: scale(0.98);
+}
+
+/*
+=============== 
+Plant List Section
+===============
+*/
+
+.plant-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em 0;
+}
+
+.plant-list h2 {
+  font-family: var(--header-font);
+  color: var(--main-heading-color2);
+}
+
+.create__btn {
+  width: 70px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 0.875rem;
+  line-height: 28px;
+  letter-spacing: 0.03rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.plant-list {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--section-bg-color);
+  border-radius: 1rem;
+  padding: 3rem 0 2rem 0;
+  margin: 0.75rem 0;
+  box-shadow: 0px 20px 37px 2px #4d8c7516;
+}
+
+.plant a {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plant__details-link {
+  width: 2rem;
+  display: inline-block;
+  align-self: flex-start;
+  padding-top: 0.8rem;
+}
+
+.plant__details-link:hover {
+  transform: scale(1.1);
+}
+
+.plant:active,
+.plant__details-link:active {
   transform: scale(0.98);
 }
 
@@ -519,5 +580,14 @@ Care Section
 
   .care__btn {
     margin-bottom: 2.25rem;
+  }
+
+  /*
+  =============== 
+  Plant List Section
+  ===============
+  */
+  .plant__details-link {
+    padding-top: 1.1rem;
   }
 }

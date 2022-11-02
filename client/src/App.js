@@ -1,6 +1,8 @@
 import Header from "./components/header";
 import Home from "./pages/home";
 import Care from "./pages/care";
+import Plants from "./pages/plants";
+import PlantDetails from "./components/plantDetails";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -44,6 +46,8 @@ function Content() {
       <Routes location={displayLocation}>
         <Route path="/home" element={<Home />} />
         <Route path="/care" element={<Care />} />
+        <Route path="/plants" element={<Plants />} />
+        <Route path="/plant/:id" element={<PlantDetails />} />
       </Routes>
     </div>
   );

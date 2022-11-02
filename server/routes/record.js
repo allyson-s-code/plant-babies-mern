@@ -17,7 +17,7 @@ plantRoutes.route("/plant").get(function (req, res) {
   db_connect
     .collection("plants")
     .find({})
-    .toArray(function (err, result) { 
+    .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
     });
@@ -36,26 +36,26 @@ plantRoutes.route("/plant/:id").get(function (req, res) {
 // This section will help you update a record by id.
 plantRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
-  console.log("reqparams", req.params.id)
-  let number = parseInt(req.params.id)
+  console.log("reqparams", req.params.id);
+  let number = parseInt(req.params.id);
   let id = ObjectId(number);
-  
-  console.log("id", id)
+
+  console.log("id", id);
   let myquery = { _id: number };
-  console.log("myQuery", myquery)
+  console.log("myQuery", myquery);
   let newvalues = {
     $set: {
       waterDate: req.body.waterDate,
-      feedDate: req.body.feedDate
+      feedDate: req.body.feedDate,
     },
   };
-  console.log("newValues", newvalues)
+  console.log("newValues", newvalues);
   db_connect
     .collection("plants")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
-      console.log("res", res)
+      console.log("res", res);
       response.json(res);
     });
 });
