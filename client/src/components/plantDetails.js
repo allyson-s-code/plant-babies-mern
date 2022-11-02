@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function PlantDetails() {
   const [plant, setPlant] = useState([]);
-  console.log(plant.id);
+  const params = useParams();
+
   //fetches plant from database
   useEffect(() => {
-    async function getPlant(id) {
-      const response = await fetch(`http://localhost:4000/plant/${id}`);
+    async function getPlant() {
+      const id = params.id;
+      const response = await fetch(`http://localhost:4000/plants/${id}`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -15,14 +18,20 @@ export default function PlantDetails() {
       }
 
       const plant = await response.json();
+      if (!plant) {
+        window.alert(`Record with id ${id} not found`);
+
+        return;
+      }
       setPlant(plant);
     }
 
     getPlant();
 
     return;
-  }, []);
+  }, [params.id]);
 
+  console.log(plant);
   return (
     <div className="plant-details" id={plant._id}>
       <div className="plant-details__img-wrapper">

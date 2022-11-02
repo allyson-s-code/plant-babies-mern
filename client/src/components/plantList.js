@@ -9,7 +9,7 @@ function PlantList() {
   //fetches all the records from the database
   useEffect(() => {
     async function getPlants() {
-      const response = await fetch("http://localhost:4000/plant/");
+      const response = await fetch("http://localhost:4000/plants/");
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

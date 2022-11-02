@@ -47,7 +47,7 @@ function Content() {
         <Route path="/home" element={<Home />} />
         <Route path="/care" element={<Care />} />
         <Route path="/plants" element={<Plants />} />
-        <Route path="/plant/:id" element={<PlantDetails />} />
+        <Route path="/plants/:id" element={<PlantDetails />} />
       </Routes>
     </div>
   );
