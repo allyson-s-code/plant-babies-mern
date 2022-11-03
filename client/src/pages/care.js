@@ -3,10 +3,10 @@ import FeedList from "../components/feedList";
 import WaterList from "../components/waterList";
 
 const Care = () => (
-  <div className="care-section">
+  <section className="care-section">
     <WaterList />
     <FeedList />
-  </div>
+  </section>
 );
 
 export default Care;

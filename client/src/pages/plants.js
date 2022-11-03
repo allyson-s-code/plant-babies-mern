@@ -2,9 +2,9 @@ import React from "react";
 import PlantList from "../components/plantList";
 
 const Plants = () => (
-  <div className="plant-section">
+  <section className="plant-section">
     <PlantList />
-  </div>
+  </section>
 );
 
 export default Plants;

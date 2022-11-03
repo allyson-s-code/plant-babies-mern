@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function PlantDetails() {
   const [plant, setPlant] = useState([]);
@@ -33,20 +34,57 @@ export default function PlantDetails() {
 
   console.log(plant);
   return (
-    <div className="plant-details" id={plant._id}>
-      <div className="plant-details__img-wrapper">
-        <img src={plant.img} alt={plant.name} className="plant-details__img" />
+    <section className="details-section">
+      <div className="plant-details" id={plant._id}>
+        <div className="plant-details__img-wrapper">
+          <img
+            src={plant.img}
+            alt={plant.name}
+            className="plant-details__img"
+          />
+        </div>
+        <div className="plant-details__text-wrapper">
+          <h4 className="plant-details__name">
+            <strong>Name: </strong>
+            {plant.name}
+          </h4>
+          <p>
+            <strong>Botanical Name: </strong>
+            {plant.botanicalName}
+          </p>
+          <p>
+            <strong>Water Frequency (in days): </strong>
+            {plant.waterFrequency}
+          </p>
+          <p>
+            <strong>Feed Frequency (in days):</strong> {plant.feedFrequency}
+          </p>
+          <p>
+            <strong>Light: </strong>
+            {plant.light}
+          </p>
+          <p>
+            <strong>Care: </strong>
+            {plant.care}
+          </p>
+          <p>
+            <strong>Next Water Date: </strong>
+            {plant.waterDate}
+          </p>
+          <p>
+            <strong>Next Feed Date: </strong>
+            {plant.feedDate}
+          </p>
+        </div>
       </div>
-      <div className="plant-details__text-wrapper">
-        <h3 className="plant-details__name">Name: {plant.name}</h3>
-        <p>Botanical Name: {plant.botanicalName}</p>
-        <p>Water Frequency: {plant.waterFrequency}</p>
-        <p>Feed Frequency: {plant.feedFrequency}</p>
-        <p>Light: {plant.light}</p>
-        <p>Care: {plant.care}</p>
-        <p>Next Water Date: {plant.waterDate}</p>
-        <p>Next Feed Date: {plant.feedDate}</p>
+      <div className="button-container">
+        <Link to={`/plants`}>
+          <button className="back__btn">Back</button>
+        </Link>
+        <Link to={`/edit`}>
+          <button className="edit__btn">Edit</button>
+        </Link>
       </div>
-    </div>
+    </section>
   );
 }

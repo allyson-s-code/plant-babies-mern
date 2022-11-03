@@ -23,6 +23,7 @@ export default function App() {
   );
 }
 
+//fade out/fade om transition between pages
 function Content() {
   const location = useLocation();
 

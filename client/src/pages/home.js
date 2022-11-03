@@ -3,7 +3,7 @@ import homeImg from "../assets/home-img.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => (
-  <div className="home-section">
+  <section className="home-section">
     <div className="home__img-wrapper">
       <img src={homeImg} alt="woman holding plants" className="home__img" />
     </div>
@@ -16,7 +16,7 @@ const Home = () => (
     <Link to="/plants">
       <button className="home__btn">See Plant List</button>
     </Link>
-  </div>
+  </section>
 );
 
 export default Home;
