@@ -5,7 +5,7 @@ require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/record"));
+app.use(require("./routes/record.js"));
 // get driver connection
 const dbo = require("./db/conn");
 
@@ -18,8 +18,5 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Home sweet home 🏚"); 
+  res.send("Home sweet home 🏚");
 });
-
-
-

@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Care from "./pages/care";
 import Plants from "./pages/plants";
 import PlantDetails from "./components/plantDetails";
+import NewPlant from "./components/create";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -49,6 +50,7 @@ function Content() {
         <Route path="/care" element={<Care />} />
         <Route path="/plants" element={<Plants />} />
         <Route path="/plants/:id" element={<PlantDetails />} />
+        <Route path="/plants/create" element={<NewPlant />} />
       </Routes>
     </div>
   );

@@ -42,8 +42,8 @@ function PlantList() {
   return (
     <div className="plant-list">
       <h2>Plant Family</h2>
-      <Link to={`/create`}>
-        <button className="create__btn">+ New</button>
+      <Link to={`/plants/create`}>
+        <button className="create__btn mini">+ New</button>
       </Link>
       <ul className="plant-list__plants">
         {plants.map((plant) => (

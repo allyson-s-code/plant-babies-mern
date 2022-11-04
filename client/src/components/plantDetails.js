@@ -79,10 +79,10 @@ export default function PlantDetails() {
       </div>
       <div className="button-container">
         <Link to={`/plants`}>
-          <button className="back__btn">Back</button>
+          <button className="back__btn mini">Back</button>
         </Link>
         <Link to={`/edit`}>
-          <button className="edit__btn">Edit</button>
+          <button className="edit__btn mini">Edit</button>
         </Link>
       </div>
     </section>

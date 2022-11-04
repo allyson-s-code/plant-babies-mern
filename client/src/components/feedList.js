@@ -80,7 +80,7 @@ export default function FeedList() {
     date.setDate(newDate);
 
     const editedDate = {
-      feedDate: date.toLocaleDateString("en-CA"),
+      feedDate: date.toLocaleDateString(),
       waterDate: plant.waterDate,
     };
     // This will send a post request to update the data in the database.
@@ -114,7 +114,7 @@ export default function FeedList() {
             className="feed-list__completed-img"
           />
           <Link to="/home">
-            <button className="care__btn">Return Home</button>
+            <button className="care__btn secondary">Return Home</button>
           </Link>
         </div>
       )}

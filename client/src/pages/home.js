@@ -11,10 +11,10 @@ const Home = () => (
       Check on your <span>babies</span> and show some love
     </h2>
     <Link to="/care">
-      <button className="home__btn">Check In</button>
+      <button className="home__btn primary">Check In</button>
     </Link>
     <Link to="/plants">
-      <button className="home__btn">See Plant List</button>
+      <button className="home__btn primary">See Plant List</button>
     </Link>
   </section>
 );

@@ -13,13 +13,9 @@ Variables
 
 :root {
   --main-heading-color2: #046a38;
-  --main-heading-color: #4d8c75;
   --main-bg-color: #f2f7f3;
-  --main-btn-color: #c6755c;
-  --main-text-color: #134d38;
   --main-text-color2: #134d38;
   --section-bg-color: #fafbf9;
-  --plant-hover-color: #86ec6e;
   --header-font: Spicy Rice;
   --spacing: 0.18rem;
 }
@@ -29,6 +25,12 @@ Variables
 Global Styles
 ===============
 */
+
+form,
+input,
+textarea {
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Nunito Sans", sans-serif;
@@ -79,10 +81,13 @@ h1 {
   font-size: 2.75rem;
   font-family: serif;
   font-family: var(--header-font);
+  color: var(--main-heading-color2);
 }
 
 h2 {
   font-size: 2rem;
+  font-family: var(--header-font);
+  color: var(--main-heading-color2);
 }
 
 h3 {
@@ -179,6 +184,31 @@ button:active {
   }
 }
 
+button.primary {
+  width: 175px;
+  height: 50px;
+  letter-spacing: 0.03rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+button.secondary {
+  width: 150px;
+  height: 45px;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+button.mini {
+  width: 70px;
+  height: 30px;
+  font-size: 0.875rem;
+  line-height: 28px;
+  letter-spacing: 0.03rem;
+  font-weight: 700;
+}
+
 /*
 =============== 
 Header Styles
@@ -196,7 +226,6 @@ Header Styles
 }
 
 .app-header__title {
-  color: var(--main-heading-color2);
   letter-spacing: var(--spacing);
   transition: 0.2s ease-in-out;
 }
@@ -250,11 +279,6 @@ Home Section Styles
 }
 
 .home__btn {
-  width: 175px;
-  height: 50px;
-  letter-spacing: 0.03rem;
-  font-weight: 700;
-  font-size: 1.2rem;
   margin: 0.75rem 0;
 }
 
@@ -291,12 +315,6 @@ Care Section Styles
   margin: 0;
 }
 
-.water-list h2,
-.feed-list h2 {
-  font-family: var(--header-font);
-  color: var(--main-heading-color2);
-}
-
 .water-list p,
 .feed-list p {
   width: 75%;
@@ -327,12 +345,6 @@ Care Section Styles
 }
 
 .care__btn {
-  width: 150px;
-  height: 45px;
-  border-radius: 25px;
-  letter-spacing: 0.1rem;
-  font-weight: 700;
-  font-size: 0.875rem;
   margin-bottom: 1.25rem;
 }
 
@@ -425,22 +437,12 @@ Plant List Section
   margin: 1.5em 0;
 }
 
-.plant-list h2 {
-  font-family: var(--header-font);
-  color: var(--main-heading-color2);
-}
-
 .create__btn {
-  width: 70px;
-  height: 30px;
   padding: 0;
   display: inline-flex;
   justify-content: center;
   align-content: center;
-  font-size: 0.875rem;
   line-height: 28px;
-  letter-spacing: 0.03rem;
-  font-weight: 700;
   margin-top: 1rem;
 }
 
@@ -488,7 +490,7 @@ Plant Details Section
 ===============
 */
 .details-section {
-  width: 100%;
+  width: 90%;
   height: 100%;
   margin: 1.5rem 0 3rem 0;
   background-color: var(--section-bg-color);
@@ -498,7 +500,7 @@ Plant Details Section
 }
 
 .plant-details {
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -553,6 +555,82 @@ Plant Details Section
   letter-spacing: 0.03rem;
   font-weight: 700;
   margin-top: 1rem;
+}
+
+/*
+===============
+Form Styles
+===============
+*/
+form {
+  width: 85%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  height: 2.25rem;
+  border: 2px solid #dbebe2;
+  border-radius: 8px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color2);
+  font: inherit;
+  padding: 0 5px;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+input:focus,
+textarea:focus {
+  border-color: lawngreen;
+}
+
+.error-msg {
+  font-size: 0.875rem;
+  color: #f83131;
+  font-weight: 700;
+}
+
+/*
+========================
+Create New Plant Section 
+========================
+*/
+
+.create-section {
+  width: 90%;
+  height: auto;
+  margin: 1.5rem 0 3rem 0;
+  background-color: var(--section-bg-color);
+  border-radius: 1rem;
+  box-shadow: 0px 20px 37px 2px #4d8c7516;
+  padding: 3.5rem 0;
+}
+
+.care-input {
+  height: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.submit-new__btn {
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 481px) {

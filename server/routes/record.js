@@ -27,11 +27,11 @@ plantRoutes.route("/plants").get(function (req, res) {
 plantRoutes.route("/plants/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   console.log("reqparams", req.params.id);
-  let number = parseInt(req.params.id);
-  let id = ObjectId(number);
+  //let number = parseInt(req.params.id);
+  let id = ObjectId(req.params.id);
 
   console.log("id", id);
-  let myquery = { _id: number };
+  let myquery = { _id: id };
   console.log("myQuery", myquery);
 
   db_connect.collection("plants").findOne(myquery, function (err, result) {
@@ -40,15 +40,36 @@ plantRoutes.route("/plants/:id").get(function (req, res) {
   });
 });
 
+// This section will help you create a new record.
+plantRoutes.route("/plants/create").post(function (req, response) {
+  let db_connect = dbo.getDb("plant-babies-data");
+  let myobj = {
+    _id: req.body.id,
+    name: req.body.name,
+    botanicalName: req.body.botanicalName,
+    img: req.body.img,
+    waterFrequency: req.body.waterFrequency,
+    feedFrequency: req.body.feedFrequency,
+    light: req.body.light,
+    care: req.body.care,
+    waterDate: req.body.waterDate,
+    feedDate: req.body.feedDate,
+  };
+  db_connect.collection("plants").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 // This section will help you update a record by id.
 plantRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
   console.log("reqparams", req.params.id);
-  let number = parseInt(req.params.id);
-  let id = ObjectId(number);
+  //let number = parseInt(req.params.id);
+  let id = ObjectId(req.params.id);
 
   console.log("id", id);
-  let myquery = { _id: number };
+  let myquery = { _id: id };
   console.log("myQuery", myquery);
   let newvalues = {
     $set: {

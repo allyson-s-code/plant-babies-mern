@@ -59,7 +59,7 @@ export default function WaterList() {
     date.setDate(newDate);
 
     const editedDate = {
-      waterDate: date.toLocaleDateString("en-CA"),
+      waterDate: date.toLocaleDateString(),
       feedDate: plant.feedDate,
     };
     // This will send a post request to update the data in the database.
@@ -93,7 +93,7 @@ export default function WaterList() {
             className="water-list__completed-img"
           />
           <Link to="/home">
-            <button className="care__btn">Return Home</button>
+            <button className="care__btn secondary">Return Home</button>
           </Link>
         </div>
       )}
