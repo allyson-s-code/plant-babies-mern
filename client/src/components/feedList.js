@@ -116,6 +116,9 @@ export default function FeedList() {
           <Link to="/home">
             <button className="care__btn secondary">Return Home</button>
           </Link>
+          <Link to="/plants">
+            <button className="care__btn secondary">See Plant List</button>
+          </Link>
         </div>
       )}
 

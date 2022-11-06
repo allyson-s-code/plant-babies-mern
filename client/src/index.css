@@ -604,6 +604,13 @@ textarea:focus {
   font-size: 0.875rem;
   color: #f83131;
   font-weight: 700;
+  padding-top: 3px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 /*
@@ -623,7 +630,7 @@ Create New Plant Section
 }
 
 .care-input {
-  height: 10rem;
+  height: 14rem;
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
@@ -720,10 +727,6 @@ Care Section
   .feed-list__completed-img,
   .water-list__completed-img {
     margin: 1.5rem 0 2.5rem 0;
-  }
-
-  .care__btn {
-    margin-bottom: 2.25rem;
   }
 
   /*

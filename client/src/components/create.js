@@ -21,10 +21,9 @@ export default function NewPlant() {
 
   const formik = useFormik({
     initialValues: {
-      _id: 14,
       name: "",
       botanicalName: "",
-      img: "https://lh3.googleusercontent.com/LN7eI5sheAf-rAnKHRPSs-FRfEkNS_3eUzgbX_uaYrW4r1PJQFRzzkLHy4kd2JDRJWnFXFNCYlRaeHNLdespTsSwmHNoruZktJFF8iRv8XRcmMcANESE9jUFXaEmhe8U4Lqoyys0dehFrc7WY4geezSf7pb1AF1QnfJMHU4Tvg8NadhsrvZhZBZAf5FDXVlFEjyqSXSheg8OtMqkVpJh6gkuGMy79-ZPvEZnVYEhZEjMhUY952zyzHS25UGUiVM7mwa_JVdYo2Y4cGOK96jY0KDM0itXAAhTXd-qFAcWd5u4I-UFDnGqQOVdr-OsWdnDqXmwd73EoWo70lDKFNt3UPjzo4Y_jBZhT6YaB0m7h2feVrHHf-pKrNqc0bxEz8YB8kPup3138HabwAwQI9i-oop95uPLeGa_VGZlSFAyJw4mI4gFfXKHTpSmG85hXpZ8ckDCifiidC5wXc-llRa1s6B-_D8BphnNIV5fPLEOt_sLFeKhKI0a13o3ZNOE2-NaouSbBccZrfpwneSMrp5sL47CmrEbI1WGwh0OVdWmTYYQGW4zb-4c0JeDc46Dxin9OOhADAIjlel1Ro7cuKDgSltv_xqyHT8JzG5B5-LJ-iwjWrlhvE7b6WA0PyT0q6gZZVQ1gnZw2dEimeR_0MFfaAnTq5KLcYbYcMV-XJ-piBY1rzbdevAVgF5yf-RVPvkOTg9X76qs7N298OarjhXrBSgkBELRMc4Y4iVP9RH31SbY-jeTmo-TTaeS8m5YybrUvMh9I2xZGlTaHXD65z8FGUtjO_sUetw3h7NR3Pa_o0QgYV01eQkUz7P5teaCSatkjvwJhNgpEUjU9-mURsZMP2O7MDRWXmvGm2uUARfsfcpr6SHD7Rii1YyJis9bAjVCu9CBw3b0K9EztgWgQXnmtD6K9jNFWgsPYpDK94VJZdFcKVLmhg=s500-no?authuser=0",
+      img: "https://images.unsplash.com/photo-1581573025746-0ee51aef032a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80",
       waterFrequency: 7,
       feedFrequency: null,
       light: "",
@@ -38,7 +37,7 @@ export default function NewPlant() {
       botanicalName: Yup.string().required("Required"),
       img: Yup.string().url().nullable(),
       waterFrequency: Yup.number().required("Required").positive().integer(),
-      feedFrequency: Yup.number().positive().integer().nullable(),
+      feedFrequency: Yup.number().positive().nullable(),
       light: Yup.string().required("Required"),
       care: Yup.string().required("Required"),
       waterDate: Yup.string().required("Required"),
@@ -61,6 +60,7 @@ export default function NewPlant() {
           id="name"
           name="name"
           type="text"
+          placeholder="Spider Plant"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.firstName}
@@ -74,6 +74,7 @@ export default function NewPlant() {
           id="botanicalName"
           name="botanicalName"
           type="text"
+          placeholder="Chlorophytum comosum"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.botanicalName}
@@ -82,11 +83,14 @@ export default function NewPlant() {
           <div className="error-msg">{formik.errors.botanicalName}</div>
         ) : null}
 
-        <label htmlFor="img">Image (url only):</label>
+        <label htmlFor="img">
+          Image (url) <span>or leave blank-</span>
+        </label>
         <input
           id="img"
           name="img"
           type="url"
+          placeholder="https://images/unsplash.com/photo-1"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -100,6 +104,7 @@ export default function NewPlant() {
           id="waterFrequency"
           name="waterFrequency"
           type="number"
+          placeholder="7"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -113,6 +118,7 @@ export default function NewPlant() {
           id="feedFrequency"
           name="feedFrequency"
           type="number"
+          placeholder="30"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -126,6 +132,7 @@ export default function NewPlant() {
           id="light"
           name="light"
           type="text"
+          placeholder="Partial, shade"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -139,6 +146,8 @@ export default function NewPlant() {
           id="care"
           name="care"
           type="text"
+          placeholder="Spider plants are often grown in containers as hanging plants due to the cascading nature of their foliage and their long stems with plantlets. 
+          Regular watering is typically the most time-consuming part of spider plant care. Throughout the growing season (spring to fall) also plan to fertilize regularly. And repot your plant as needed once its roots have outgrown the container. "
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -153,6 +162,7 @@ export default function NewPlant() {
           id="waterDate"
           name="waterDate"
           type="date"
+          placeholder="11/06/2022"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -166,6 +176,7 @@ export default function NewPlant() {
           id="feedDate"
           name="feedDate"
           type="date"
+          placeholder="11/01/2022"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
