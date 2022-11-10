@@ -591,6 +591,13 @@ textarea {
   padding: 0 5px;
 }
 
+textarea {
+  height: 14rem;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
 *:focus {
   outline: none !important;
 }
@@ -627,13 +634,6 @@ Create New Plant Section
   border-radius: 1rem;
   box-shadow: 0px 20px 37px 2px #4d8c7516;
   padding: 3.5rem 0;
-}
-
-.care-input {
-  height: 14rem;
-  display: flex;
-  justify-content: flex-start;
-  align-content: flex-start;
 }
 
 .submit-new__btn {

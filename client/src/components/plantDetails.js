@@ -32,7 +32,13 @@ export default function PlantDetails() {
     return;
   }, [params.id]);
 
-  console.log(plant);
+  const deleteRecord = async () => {
+    const id = params.id;
+    await fetch(`http://localhost:4000/${id}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <section className="details-section">
       <div className="plant-details" id={plant._id}>
@@ -81,8 +87,24 @@ export default function PlantDetails() {
         <Link to={`/plants`}>
           <button className="back__btn mini">Back</button>
         </Link>
-        <Link to={`/edit`}>
+        <Link to={`/${plant._id}/edit`}>
           <button className="edit__btn mini">Edit</button>
+        </Link>
+
+        <Link to={`/plants`}>
+          <button
+            type="button"
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you wish to delete this item?")
+              ) {
+                deleteRecord();
+              }
+            }}
+            className="delete__btn mini"
+          >
+            Delete
+          </button>
         </Link>
       </div>
     </section>

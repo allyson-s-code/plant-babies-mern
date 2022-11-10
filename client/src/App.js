@@ -4,6 +4,7 @@ import Care from "./pages/care";
 import Plants from "./pages/plants";
 import PlantDetails from "./components/plantDetails";
 import NewPlant from "./components/create";
+import UpdatePlantForm from "./components/edit";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -51,6 +52,7 @@ function Content() {
         <Route path="/plants" element={<Plants />} />
         <Route path="/plants/:id" element={<PlantDetails />} />
         <Route path="/plants/create" element={<NewPlant />} />
+        <Route path="/:id/edit" element={<UpdatePlantForm />} />
       </Routes>
     </div>
   );

@@ -44,7 +44,6 @@ plantRoutes.route("/plants/:id").get(function (req, res) {
 plantRoutes.route("/plants/create").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
   let myobj = {
-    _id: req.body.id,
     name: req.body.name,
     botanicalName: req.body.botanicalName,
     img: req.body.img,
@@ -86,6 +85,50 @@ plantRoutes.route("/update/:id").post(function (req, response) {
       console.log("res", res);
       response.json(res);
     });
+});
+
+// This section will help you edit a record by id.
+plantRoutes.route("/:id/edit").post(function (req, response) {
+  let db_connect = dbo.getDb("plant-babies-data");
+  console.log("reqparams", req.params.id);
+  let id = ObjectId(req.params.id);
+
+  console.log("id", id);
+  let myquery = { _id: id };
+  console.log("myQuery", myquery);
+  let newvalues = {
+    $set: {
+      name: req.body.name,
+      botanicalName: req.body.botanicalName,
+      img: req.body.img,
+      waterFrequency: req.body.waterFrequency,
+      feedFrequency: req.body.feedFrequency,
+      light: req.body.light,
+      care: req.body.care,
+      waterDate: req.body.waterDate,
+      feedDate: req.body.feedDate,
+    },
+  };
+  console.log("newValues", newvalues);
+  db_connect
+    .collection("plants")
+    .updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log("1 document updated");
+      console.log("res", res);
+      response.json(res);
+    });
+});
+
+// This section will help you delete a record
+plantRoutes.route("/:id").delete((req, response) => {
+  let db_connect = dbo.getDb("plant-babies-data");
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection("plants").deleteOne(myquery, function (err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    response.json(obj);
+  });
 });
 
 module.exports = plantRoutes;
