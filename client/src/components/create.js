@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 export default function NewPlant() {
   async function postData() {
@@ -24,8 +25,8 @@ export default function NewPlant() {
       name: "",
       botanicalName: "",
       img: "https://images.unsplash.com/photo-1581573025746-0ee51aef032a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80",
-      waterFrequency: 7,
-      feedFrequency: null,
+      waterFrequency: "",
+      feedFrequency: "",
       light: "",
       care: "",
       waterDate: "",
@@ -43,17 +44,19 @@ export default function NewPlant() {
       waterDate: Yup.string().required("Required"),
       feedDate: Yup.string().nullable(),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, actions) => {
       alert(JSON.stringify(values, null, 2));
       postData(values);
-      console.log(values);
+      actions.setSubmitting(false);
+      actions.setStatus("sent");
+      actions.resetForm();
     },
   });
 
-  console.log(formik.values);
   return (
     <section className="create-section">
       <h2>Add a New Plant!</h2>
+
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
@@ -63,7 +66,7 @@ export default function NewPlant() {
           placeholder="Spider Plant"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.firstName}
+          value={formik.values.name}
         />
         {formik.touched.name && formik.errors.name ? (
           <div className="error-msg">{formik.errors.name}</div>
@@ -84,7 +87,7 @@ export default function NewPlant() {
         ) : null}
 
         <label htmlFor="img">
-          Image (url) <span>or leave blank-</span>
+          Image (url) <span>or keep default-</span>
         </label>
         <input
           id="img"
@@ -93,7 +96,7 @@ export default function NewPlant() {
           placeholder="https://images/unsplash.com/photo-1"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.img}
         />
         {formik.touched.img && formik.errors.img ? (
           <div className="error-msg">{formik.errors.img}</div>
@@ -107,7 +110,7 @@ export default function NewPlant() {
           placeholder="7"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.waterFrequency}
         />
         {formik.touched.waterFrequency && formik.errors.waterFrequency ? (
           <div className="error-msg">{formik.errors.waterFrequency}</div>
@@ -121,7 +124,7 @@ export default function NewPlant() {
           placeholder="30"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.feedFrequency}
         />
         {formik.touched.feedFrequency && formik.errors.feedFrequency ? (
           <div className="error-msg">{formik.errors.feedFrequency}</div>
@@ -135,7 +138,7 @@ export default function NewPlant() {
           placeholder="Partial, shade"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.light}
         />
         {formik.touched.light && formik.errors.light ? (
           <div className="error-msg">{formik.errors.light}</div>
@@ -150,7 +153,7 @@ export default function NewPlant() {
           Regular watering is typically the most time-consuming part of spider plant care. Throughout the growing season (spring to fall) also plan to fertilize regularly. And repot your plant as needed once its roots have outgrown the container. "
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.care}
           className="care-input"
         />
         {formik.touched.care && formik.errors.care ? (
@@ -165,7 +168,7 @@ export default function NewPlant() {
           placeholder="11/06/2022"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.waterDate}
         />
         {formik.touched.waterDate && formik.errors.waterDate ? (
           <div className="error-msg">{formik.errors.waterDate}</div>
@@ -179,15 +182,33 @@ export default function NewPlant() {
           placeholder="11/01/2022"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.feedDate}
         />
         {formik.touched.feedDate && formik.errors.feedDate ? (
           <div className="error-msg">{formik.errors.feedDate}</div>
         ) : null}
 
-        <button type="submit" className="submit-new__btn secondary">
-          Submit
-        </button>
+        {formik.status === "sent" ? (
+          <div className="success-msg">
+            <h3>Congrats on your new Plant Baby!</h3>
+            <Link to={`/plants`}>
+              <button type="button" className="cancel__btn secondary">
+                Back
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <Link to={`/plants`}>
+              <button type="button" className="cancel__btn secondary">
+                Cancel
+              </button>
+            </Link>
+            <button type="submit" className="submit-new__btn secondary">
+              Submit
+            </button>
+          </div>
+        )}
       </form>
     </section>
   );

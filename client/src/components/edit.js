@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import TextError from "./textError";
+import { Link } from "react-router-dom";
 
 export default function UpdatePlantForm() {
   const [form, setForm] = useState({
@@ -45,22 +46,23 @@ export default function UpdatePlantForm() {
     return;
   }, [params.id]);
 
-  async function postData(form) {
+  const onSubmit = async (values, actions) => {
     // When a post request is sent to the update url, we'll update a record from the database.
     const updatedPlant = {
-      name: form.name,
-      botanicalName: form.botanicalName,
-      img: form.img,
-      waterFrequency: form.waterFrequency,
-      feedFrequency: form.feedFrequency,
-      light: form.light,
-      care: form.care,
-      waterDate: form.waterDate,
-      feedDate: form.feedDate,
+      name: values.name,
+      botanicalName: values.botanicalName,
+      img: values.img,
+      waterFrequency: values.waterFrequency,
+      feedFrequency: values.feedFrequency,
+      light: values.light,
+      care: values.care,
+      waterDate: values.waterDate,
+      feedDate: values.feedDate,
     };
-    console.log(form.name);
     const id = params.id;
-    await fetch(`http://localhost:4000/${id}/edit`, {
+    alert(JSON.stringify(values, null, 2));
+
+    const response = await fetch(`http://localhost:4000/${id}/edit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,11 +72,11 @@ export default function UpdatePlantForm() {
       window.alert(error);
       return;
     });
-  }
-
-  const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-    postData(values);
+    if (response) {
+      actions.setSubmitting(false);
+      actions.setStatus("sent");
+      console.log("your plant baby has been updated:)");
+    }
   };
 
   const validationSchema = Yup.object({
@@ -99,49 +101,83 @@ export default function UpdatePlantForm() {
         onSubmit={onSubmit}
         enableReinitialize
       >
-        <Form>
-          <label htmlFor="name">Name:</label>
-          <Field id="name" name="name" type="text" />
-          <ErrorMessage name="name" component={TextError} />
+        {(formik) => {
+          console.log("Formik Props", formik);
+          return (
+            <Form>
+              <label htmlFor="name">Name:</label>
+              <Field id="name" name="name" type="text" />
+              <ErrorMessage name="name" component={TextError} />
 
-          <label htmlFor="botanicalName">Botanical Name:</label>
-          <Field id="botanicalName" name="botanicalName" type="text" />
-          <ErrorMessage name="botanicalName" component={TextError} />
+              <label htmlFor="botanicalName">Botanical Name:</label>
+              <Field id="botanicalName" name="botanicalName" type="text" />
+              <ErrorMessage name="botanicalName" component={TextError} />
 
-          <label htmlFor="img">
-            Image (url) <span>or leave blank-</span>
-          </label>
-          <Field id="img" name="img" type="url" />
-          <ErrorMessage name="img" component={TextError} />
+              <label htmlFor="img">
+                Image (url) <span>or leave blank-</span>
+              </label>
+              <Field id="img" name="img" type="url" />
+              <ErrorMessage name="img" component={TextError} />
 
-          <label htmlFor="waterFrequency">Water Frequency (in days):</label>
-          <Field id="waterFrequency" name="waterFrequency" type="number" />
-          <ErrorMessage name="waterFrequency" component={TextError} />
+              <label htmlFor="waterFrequency">Water Frequency (in days):</label>
+              <Field id="waterFrequency" name="waterFrequency" type="number" />
+              <ErrorMessage name="waterFrequency" component={TextError} />
 
-          <label htmlFor="feedFrequency">Feed Frequency (in days):</label>
-          <Field id="feedFrequency" name="feedFrequency" type="number" />
-          <ErrorMessage name="feedFrequency" component={TextError} />
+              <label htmlFor="feedFrequency">Feed Frequency (in days):</label>
+              <Field id="feedFrequency" name="feedFrequency" type="number" />
+              <ErrorMessage name="feedFrequency" component={TextError} />
 
-          <label htmlFor="light">Light:</label>
-          <Field id="light" name="light" type="text" />
-          <ErrorMessage name="light" component={TextError} />
+              <label htmlFor="light">Light:</label>
+              <Field id="light" name="light" type="text" />
+              <ErrorMessage name="light" component={TextError} />
 
-          <label htmlFor="care">Care:</label>
-          <Field as="textarea" id="care" name="care" type="text" />
-          <ErrorMessage name="care" component={TextError} />
+              <label htmlFor="care">Care:</label>
+              <Field as="textarea" id="care" name="care" type="text" />
+              <ErrorMessage name="care" component={TextError} />
 
-          <label htmlFor="waterDate">Next Water Date:</label>
-          <Field id="waterDate" name="waterDate" type="date" />
-          <ErrorMessage name="waterDate" component={TextError} />
+              <label htmlFor="waterDate">Next Water Date:</label>
+              <Field id="waterDate" name="waterDate" type="date" />
+              <ErrorMessage name="waterDate" component={TextError} />
 
-          <label htmlFor="feedDate">Next Feed Date:</label>
-          <Field id="feedDate" name="feedDate" type="date" />
-          <ErrorMessage name="feedDate" component={TextError} />
+              <label htmlFor="feedDate">Next Feed Date:</label>
+              <Field id="feedDate" name="feedDate" type="date" />
+              <ErrorMessage name="feedDate" component={TextError} />
 
-          <button type="submit" className="submit-new__btn secondary">
-            Submit
-          </button>
-        </Form>
+              {formik.status === "sent" ? (
+                <div className="success-msg">
+                  <h3>Your Plant Baby has been updated :)</h3>
+                  <div>
+                    <Link to={`/home`}>
+                      <button type="button" className="secondary">
+                        Home
+                      </button>
+                    </Link>
+                    <Link to={`/plants`}>
+                      <button type="button" className="secondary">
+                        Plant List
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <Link to={`/plants`}>
+                    <button type="button" className="cancel__btn secondary">
+                      Cancel
+                    </button>
+                  </Link>
+                  <button
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    className="submit-new__btn secondary"
+                  >
+                    Submit
+                  </button>
+                </div>
+              )}
+            </Form>
+          );
+        }}
       </Formik>
     </section>
   );

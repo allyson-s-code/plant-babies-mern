@@ -155,6 +155,9 @@ button {
   transition: 0.2s ease-in-out;
   border: 2px solid var(--main-heading-color2);
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
@@ -198,6 +201,7 @@ button.secondary {
   letter-spacing: 0.1rem;
   font-weight: 700;
   font-size: 0.875rem;
+  margin-top: 1.5rem;
 }
 
 button.mini {
@@ -293,7 +297,7 @@ Care Section Styles
 
 .water-list,
 .feed-list {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -490,7 +494,6 @@ Plant Details Section
 ===============
 */
 .details-section {
-  width: 90%;
   height: 100%;
   margin: 1.5rem 0 3rem 0;
   background-color: var(--section-bg-color);
@@ -504,7 +507,7 @@ Plant Details Section
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 0;
 }
 
@@ -512,6 +515,7 @@ Plant Details Section
   width: 150px;
   height: 150px;
   display: flex;
+  align-self: center;
   overflow: hidden;
   border-radius: 50%;
   background-color: #88b086;
@@ -539,11 +543,12 @@ Plant Details Section
   display: flex;
   justify-content: center;
   align-content: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .edit__btn,
-.back__btn {
+.back__btn,
+.delete__btn {
   width: 70px;
   height: 30px;
   padding: 0;
@@ -588,7 +593,7 @@ textarea {
   background-color: var(--main-bg-color);
   color: var(--main-text-color2);
   font: inherit;
-  padding: 0 5px;
+  padding: 5px;
 }
 
 textarea {
@@ -622,12 +627,11 @@ textarea::placeholder {
 
 /*
 ========================
-Create New Plant Section 
+Create New/ Edit Plant Sections 
 ========================
 */
 
 .create-section {
-  width: 90%;
   height: auto;
   margin: 1.5rem 0 3rem 0;
   background-color: var(--section-bg-color);
@@ -636,7 +640,12 @@ Create New Plant Section
   padding: 3.5rem 0;
 }
 
-.submit-new__btn {
+.submit-new__btn,
+.cancel__btn {
+  margin-top: 2rem;
+}
+
+.success-msg {
   margin-top: 2rem;
 }
 
@@ -657,6 +666,9 @@ Global Styles
     font-size: 1.3rem;
   }
 
+  section {
+    width: 90%;
+  }
   /*
 =============== 
 Header Styles
@@ -694,7 +706,7 @@ Care Section
 
   .water-list,
   .feed-list {
-    width: 85%;
+    width: 90%;
     padding: 3.5rem 0 2rem 0;
   }
 
@@ -743,6 +755,11 @@ Care Section
   Plant Details Section
   ===============
   */
+
+  .details-section {
+    width: 90%;
+  }
+
   .plant-details__img-wrapper {
     width: 225px;
     height: 225px;
