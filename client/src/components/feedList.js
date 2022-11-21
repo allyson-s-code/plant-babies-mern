@@ -60,7 +60,6 @@ export default function FeedList() {
       return [];
     }
   }
-  console.log(plants);
 
   // This will update the waterDate based on onClick event on plant item
   function handleUpdate(id) {

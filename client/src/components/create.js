@@ -47,7 +47,7 @@ export default function NewPlant() {
     name: Yup.string().required("Required"),
     botanicalName: Yup.string().required("Required"),
     img: Yup.string().url().nullable(),
-    waterFrequency: Yup.number().required("Required").positive().integer(),
+    waterFrequency: Yup.number().positive().integer().required("Required"),
     feedFrequency: Yup.number().positive().nullable(),
     light: Yup.string().required("Required"),
     care: Yup.string().required("Required"),
@@ -65,7 +65,6 @@ export default function NewPlant() {
         onSubmit={onSubmit}
       >
         {(formik) => {
-          console.log("Formik Props", formik);
           return (
             <Form>
               <label htmlFor="name">Name:</label>
@@ -87,7 +86,11 @@ export default function NewPlant() {
               <ErrorMessage name="botanicalName" component={TextError} />
 
               <label htmlFor="img">
-                Image (url) <span>or leave blank-</span>
+                Image url{" "}
+                <span className="label-span">
+                  (or leave blank for default image)
+                </span>
+                :
               </label>
               <Field
                 id="img"

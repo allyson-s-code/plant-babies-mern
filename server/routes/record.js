@@ -26,13 +26,11 @@ plantRoutes.route("/plants").get(function (req, res) {
 // This section will help you get a single record by id
 plantRoutes.route("/plants/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
-  console.log("reqparams", req.params.id);
+
   //let number = parseInt(req.params.id);
   let id = ObjectId(req.params.id);
 
-  console.log("id", id);
   let myquery = { _id: id };
-  console.log("myQuery", myquery);
 
   db_connect.collection("plants").findOne(myquery, function (err, result) {
     if (err) throw err;
@@ -63,26 +61,25 @@ plantRoutes.route("/plants/create").post(function (req, response) {
 // This section will help you update a record by id.
 plantRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
-  console.log("reqparams", req.params.id);
+
   //let number = parseInt(req.params.id);
   let id = ObjectId(req.params.id);
 
-  console.log("id", id);
   let myquery = { _id: id };
-  console.log("myQuery", myquery);
+
   let newvalues = {
     $set: {
       waterDate: req.body.waterDate,
       feedDate: req.body.feedDate,
     },
   };
-  console.log("newValues", newvalues);
+
   db_connect
     .collection("plants")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
-      console.log("res", res);
+
       response.json(res);
     });
 });
@@ -90,12 +87,11 @@ plantRoutes.route("/update/:id").post(function (req, response) {
 // This section will help you edit a record by id.
 plantRoutes.route("/:id/edit").post(function (req, response) {
   let db_connect = dbo.getDb("plant-babies-data");
-  console.log("reqparams", req.params.id);
+
   let id = ObjectId(req.params.id);
 
-  console.log("id", id);
   let myquery = { _id: id };
-  console.log("myQuery", myquery);
+
   let newvalues = {
     $set: {
       name: req.body.name,
@@ -109,13 +105,13 @@ plantRoutes.route("/:id/edit").post(function (req, response) {
       feedDate: req.body.feedDate,
     },
   };
-  console.log("newValues", newvalues);
+
   db_connect
     .collection("plants")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
-      console.log("res", res);
+
       response.json(res);
     });
 });

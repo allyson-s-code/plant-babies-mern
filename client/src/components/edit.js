@@ -47,7 +47,6 @@ export default function UpdatePlantForm() {
   }, [params.id]);
 
   const onSubmit = async (values, actions) => {
-    // When a post request is sent to the update url, we'll update a record from the database.
     const updatedPlant = {
       name: values.name,
       botanicalName: values.botanicalName,
@@ -62,6 +61,7 @@ export default function UpdatePlantForm() {
     const id = params.id;
     alert(JSON.stringify(values, null, 2));
 
+    // When a post request is sent to the edit url, we'll update a record from the database.
     const response = await fetch(`http://localhost:4000/${id}/edit`, {
       method: "POST",
       headers: {
@@ -102,7 +102,6 @@ export default function UpdatePlantForm() {
         enableReinitialize
       >
         {(formik) => {
-          console.log("Formik Props", formik);
           return (
             <Form>
               <label htmlFor="name">Name:</label>

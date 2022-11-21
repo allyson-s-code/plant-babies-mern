@@ -5,6 +5,7 @@ import PlantList from "./components/plantList";
 import PlantDetails from "./components/plantDetails";
 import NewPlant from "./components/create";
 import UpdatePlantForm from "./components/edit";
+import PageNotFound from "./components/pageNotFound";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -25,7 +26,7 @@ export default function App() {
   );
 }
 
-//fade out/fade om transition between pages
+//fade out/fade on transition between pages
 function Content() {
   const location = useLocation();
 
@@ -47,12 +48,14 @@ function Content() {
       }}
     >
       <Routes location={displayLocation}>
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/care" element={<Care />} />
         <Route path="/plants" element={<PlantList />} />
         <Route path="/plants/:id" element={<PlantDetails />} />
         <Route path="/plants/create" element={<NewPlant />} />
         <Route path="/:id/edit" element={<UpdatePlantForm />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

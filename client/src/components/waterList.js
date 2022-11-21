@@ -38,8 +38,6 @@ export default function WaterList() {
     // setPlants(plants); ***infinite loop error***
     return plants;
   }
-  console.log(plants);
-  console.log(waterList(plants));
 
   // This will update the waterDate based on onClick event on plant item
   function handleUpdate(id) {
