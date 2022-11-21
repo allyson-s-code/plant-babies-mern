@@ -660,8 +660,6 @@ Create New/ Edit Plant Sections
 ========================
 */
 .not-found {
-  width: 100%;
-  height: 100%;
   margin: 1.5rem 0 3rem 0;
   background-color: var(--section-bg-color);
   border-radius: 1rem;
