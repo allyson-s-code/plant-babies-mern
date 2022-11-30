@@ -10,7 +10,9 @@ export default function FeedList() {
   //fetches all the records from the database
   useEffect(() => {
     async function getPlants() {
-      const response = await fetch("http://localhost:4000/plants/");
+      const response = await fetch(
+        "https://plant-babies-server.cyclic.app/plants/"
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -83,7 +85,7 @@ export default function FeedList() {
       waterDate: plant.waterDate,
     };
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:4000/update/${id}`, {
+    await fetch(`https://plant-babies-server.cyclic.app/update/${id}`, {
       method: "POST",
       body: JSON.stringify(editedDate),
       headers: {

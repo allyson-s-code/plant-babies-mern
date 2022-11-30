@@ -24,7 +24,9 @@ export default function UpdatePlantForm() {
   useEffect(() => {
     async function getFormValues() {
       const id = params.id;
-      const response = await fetch(`http://localhost:4000/plants/${id}`);
+      const response = await fetch(
+        `https://plant-babies-server.cyclic.app/plants/${id}`
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -62,13 +64,16 @@ export default function UpdatePlantForm() {
     alert(JSON.stringify(values, null, 2));
 
     // When a post request is sent to the edit url, we'll update a record from the database.
-    const response = await fetch(`http://localhost:4000/${id}/edit`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedPlant),
-    }).catch((error) => {
+    const response = await fetch(
+      `https://plant-babies-server.cyclic.app/${id}/edit`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedPlant),
+      }
+    ).catch((error) => {
       window.alert(error);
       return;
     });

@@ -10,7 +10,9 @@ export default function PlantDetails() {
   useEffect(() => {
     async function getPlant() {
       const id = params.id;
-      const response = await fetch(`http://localhost:4000/plants/${id}`);
+      const response = await fetch(
+        `https://plant-babies-server.cyclic.app/plants/${id}`
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

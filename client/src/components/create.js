@@ -11,13 +11,16 @@ export default function NewPlant() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newPlant = { ...values };
 
-    const response = fetch("http://localhost:4000/plants/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPlant),
-    }).catch((error) => {
+    const response = fetch(
+      "https://plant-babies-server.cyclic.app/plants/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPlant),
+      }
+    ).catch((error) => {
       window.alert(error);
       return;
     });

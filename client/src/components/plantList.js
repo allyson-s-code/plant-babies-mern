@@ -9,7 +9,9 @@ function PlantList() {
   //fetches all the records from the database
   useEffect(() => {
     async function getPlants() {
-      const response = await fetch("http://localhost:4000/plants/");
+      const response = await fetch(
+        "https://plant-babies-server.cyclic.app/plants/"
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -28,7 +30,7 @@ function PlantList() {
 
   // This method will delete a record
   async function deleteRecord(id) {
-    await fetch(`http://localhost:4000/${id}`, {
+    await fetch(`https://plant-babies-server.cyclic.app/${id}`, {
       method: "DELETE",
     });
 
