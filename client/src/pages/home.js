@@ -1,11 +1,18 @@
 import React from "react";
-import homeImg from "../assets/home-img.jpg";
+import homeImgSm from "../assets/home/home-img-300w.jpg";
+import homeImgLg from "../assets/home/home-img-400w.jpg";
+import homeImgXL from "../assets/home/home-img-800w.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => (
   <section className="home-section">
     <div className="home__img-wrapper">
-      <img src={homeImg} alt="woman holding plants" className="home__img" />
+      <img
+        srcset={`${homeImgSm} 300w, ${homeImgLg} 400w, ${homeImgXL} 800w`}
+        src={homeImgLg}
+        alt="woman holding plants"
+        className="home__img"
+      />
     </div>
     <h2 className="home__heading">
       Check on your <span>babies</span> and show some love

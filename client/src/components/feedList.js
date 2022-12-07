@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
-import happyPlant1 from "../assets/happy-plant1.png";
+import happyPlant1sm from "../assets/happy-plants/happy-plant1-200w.png";
+import happyPlant1Lg from "../assets/happy-plants/happy-plant1-325w.png";
+import happyPlant1XL from "../assets/happy-plants/happy-plant1-650w.png";
 
 export default function FeedList() {
   const [plants, setPlants] = useState([]);
@@ -110,7 +112,8 @@ export default function FeedList() {
         <div className="feed-list__completed-msg">
           <p>Your babies are fed and happy!</p>
           <img
-            src={happyPlant1}
+            srcset={`${happyPlant1sm} 200w, ${happyPlant1Lg} 325w, ${happyPlant1XL} 650w`}
+            src={happyPlant1Lg}
             alt="houseplant illustration"
             className="feed-list__completed-img"
           />

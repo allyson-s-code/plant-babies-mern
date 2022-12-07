@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Plant from "./plant";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
-import happyPlant2 from "../assets/happy-plant2.png";
+import happyPlant2sm from "../assets/happy-plants/happy-plant2-200w.png";
+import happyPlant2Lg from "../assets/happy-plants/happy-plant2-325w.png";
+import happyPlant2XL from "../assets/happy-plants/happy-plant2-650w.png";
 
 export default function WaterList() {
   const [plants, setPlants] = useState([]);
@@ -88,7 +90,8 @@ export default function WaterList() {
         <div className="water-list__completed-msg">
           <p>Your babies are watered and happy!</p>
           <img
-            src={happyPlant2}
+            srcset={`${happyPlant2sm} 200w, ${happyPlant2Lg} 325w, ${happyPlant2XL} 650w`}
+            src={happyPlant2Lg}
             alt="houseplant illustration"
             className="water-list__completed-img"
           />
