@@ -6,7 +6,7 @@ const express = require("express");
 const plantRoutes = express.Router();
 
 // This will help us connect to the database
-const dbo = require("../db/conn");
+const dbo = require("../../db/conndb/conn");
 
 // This helps convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
@@ -105,13 +105,13 @@ plantRoutes.route("/:id/edit").post(function (req, response) {
       feedDate: req.body.feedDate,
     },
   };
-  
+
   db_connect
     .collection("plants")
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
-      
+
       response.json(res);
     });
 });

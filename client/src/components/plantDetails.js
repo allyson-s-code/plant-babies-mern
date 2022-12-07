@@ -36,7 +36,7 @@ export default function PlantDetails() {
 
   const deleteRecord = async () => {
     const id = params.id;
-    await fetch(`http://localhost:4000/${id}`, {
+    await fetch(`https://plant-babies-server.cyclic.app/${id}`, {
       method: "DELETE",
     });
   };
