@@ -10,7 +10,7 @@ function PlantList() {
   useEffect(() => {
     async function getPlants() {
       const response = await fetch(
-        "https://plant-babies-server.cyclic.app/plants/"
+        "http://localhost:4000/plants/"
       );
 
       if (!response.ok) {
@@ -30,7 +30,7 @@ function PlantList() {
 
   // This method will delete a record
   async function deleteRecord(id) {
-    await fetch(`https://plant-babies-server.cyclic.app/${id}`, {
+    await fetch(`http://localhost:4000/${id}`, {
       method: "DELETE",
     });
 

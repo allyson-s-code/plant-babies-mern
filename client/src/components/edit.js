@@ -25,7 +25,7 @@ export default function UpdatePlantForm() {
     async function getFormValues() {
       const id = params.id;
       const response = await fetch(
-        `https://plant-babies-server.cyclic.app/plants/${id}`
+        `http://localhost:4000/plants/${id}`
       );
 
       if (!response.ok) {
@@ -65,7 +65,7 @@ export default function UpdatePlantForm() {
 
     // When a post request is sent to the edit url, we'll update a record from the database.
     const response = await fetch(
-      `https://plant-babies-server.cyclic.app/${id}/edit`,
+      `http://localhost:4000/${id}/edit`,
       {
         method: "POST",
         headers: {

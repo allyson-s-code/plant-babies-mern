@@ -12,7 +12,7 @@ export default function NewPlant() {
     const newPlant = { ...values };
 
     const response = fetch(
-      "https://plant-babies-server.cyclic.app/plants/create",
+      "http://localhost:4000/plants/create",
       {
         method: "POST",
         headers: {
