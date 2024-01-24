@@ -8,7 +8,7 @@ const Home = () => (
   <section className="home-section">
     <div className="home__img-wrapper">
       <img
-        srcset={`${homeImgSm} 300w, ${homeImgLg} 400w, ${homeImgXL} 800w`}
+        srcSet={`${homeImgSm} 300w, ${homeImgLg} 400w, ${homeImgXL} 800w`}
         src={homeImgLg}
         alt="woman holding plants"
         className="home__img"

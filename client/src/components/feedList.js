@@ -52,11 +52,12 @@ export default function FeedList() {
 
     if (
       thisMonth !== "December" &&
-      month !== "January" &&
-      month !== "February"
+      thisMonth !== "January" &&
+      thisMonth !== "February"
     ) {
       plants = plants.filter((plant) => {
         let feedDate = new Date(plant.feedDate);
+
         return plant.feedDate !== null && feedDate <= today;
       });
       return plants;
@@ -65,7 +66,7 @@ export default function FeedList() {
     }
   }
 
-  // This will update the waterDate based on onClick event on plant item
+  // This will update the feedDate based on onClick event on plant item
   function handleUpdate(id) {
     //call update database function
     submitData(id);
@@ -73,7 +74,7 @@ export default function FeedList() {
     removePlant(id);
   }
 
-  // update database with new waterDate
+  // update database with new feedDate
   async function submitData(id) {
     const plant = plants.find((plant) => plant._id === id);
     let date = new Date();
@@ -112,7 +113,7 @@ export default function FeedList() {
         <div className="feed-list__completed-msg">
           <p>Your babies are fed and happy!</p>
           <img
-            srcset={`${happyPlant1sm} 200w, ${happyPlant1Lg} 325w, ${happyPlant1XL} 650w`}
+            srcSet={`${happyPlant1sm} 200w, ${happyPlant1Lg} 325w, ${happyPlant1XL} 650w`}
             src={happyPlant1Lg}
             alt="houseplant illustration"
             className="feed-list__completed-img"

@@ -90,7 +90,7 @@ export default function WaterList() {
         <div className="water-list__completed-msg">
           <p>Your babies are watered and happy!</p>
           <img
-            srcset={`${happyPlant2sm} 200w, ${happyPlant2Lg} 325w, ${happyPlant2XL} 650w`}
+            srcSet={`${happyPlant2sm} 200w, ${happyPlant2Lg} 325w, ${happyPlant2XL} 650w`}
             src={happyPlant2Lg}
             alt="houseplant illustration"
             className="water-list__completed-img"
