@@ -13,7 +13,7 @@ export default function FeedList() {
   useEffect(() => {
     async function getPlants() {
       const response = await fetch(
-        "http://localhost:4000/plants/"
+        "https://plant-babies-backend.onrender.com/plants/"
       );
 
       if (!response.ok) {
@@ -88,7 +88,7 @@ export default function FeedList() {
       waterDate: plant.waterDate,
     };
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:4000/update/${id}`, {
+    await fetch(`https://plant-babies-backend.onrender.com/update/${id}`, {
       method: "POST",
       body: JSON.stringify(editedDate),
       headers: {

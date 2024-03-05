@@ -12,7 +12,7 @@ export default function NewPlant() {
     const newPlant = { ...values };
 
     const response = fetch(
-      "http://localhost:4000/plants/create",
+      "https://plant-babies-backend.onrender.com/plants/create",
       {
         method: "POST",
         headers: {
@@ -51,7 +51,7 @@ export default function NewPlant() {
     botanicalName: Yup.string().required("Required"),
     img: Yup.string().url().nullable(),
     waterFrequency: Yup.number().positive().integer().required("Required"),
-    feedFrequency: Yup.number().positive().interger().required("Required"),
+    feedFrequency: Yup.number().positive().integer().required("Required"),
     light: Yup.string().required("Required"),
     care: Yup.string().required("Required"),
     waterDate: Yup.string().required("Required"),

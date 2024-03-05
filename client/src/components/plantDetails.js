@@ -11,7 +11,7 @@ export default function PlantDetails() {
     async function getPlant() {
       const id = params.id;
       const response = await fetch(
-        `http://localhost:4000/plants/${id}`
+        `https://plant-babies-backend.onrender.com/plants/${id}`
       );
 
       if (!response.ok) {
@@ -36,7 +36,7 @@ export default function PlantDetails() {
 
   const deleteRecord = async () => {
     const id = params.id;
-    await fetch(`http://localhost:4000/${id}`, {
+    await fetch(`https://plant-babies-backend.onrender.com/${id}`, {
       method: "DELETE",
     });
   };

@@ -10,7 +10,7 @@ function PlantList() {
   useEffect(() => {
     async function getPlants() {
       const response = await fetch(
-        "http://localhost:4000/plants/"
+        "https://plant-babies-backend.onrender.com/plants/"
       );
 
       if (!response.ok) {
@@ -30,7 +30,7 @@ function PlantList() {
 
   // This method will delete a record
   async function deleteRecord(id) {
-    await fetch(`http://localhost:4000/${id}`, {
+    await fetch(`https://plant-babies-backend.onrender.com/${id}`, {
       method: "DELETE",
     });
 

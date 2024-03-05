@@ -25,7 +25,7 @@ export default function UpdatePlantForm() {
     async function getFormValues() {
       const id = params.id;
       const response = await fetch(
-        `http://localhost:4000/plants/${id}`
+        `https://plant-babies-backend.onrender.com/plants/${id}`
       );
 
       if (!response.ok) {
@@ -65,7 +65,7 @@ export default function UpdatePlantForm() {
 
     // When a post request is sent to the edit url, we'll update a record from the database.
     const response = await fetch(
-      `http://localhost:4000/${id}/edit`,
+      `https://plant-babies-backend.onrender.com/${id}/edit`,
       {
         method: "POST",
         headers: {
